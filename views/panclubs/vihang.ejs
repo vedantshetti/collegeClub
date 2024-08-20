@@ -1,0 +1,152 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="vihang-container">
+    <div class="vihang-image">
+        <img src="/images/vihang.jpg" alt="Vihang Kalamandal Image" class="active">
+    </div>
+    
+    <div class="vihang-info">
+        <h1>Vihang Kalamandal - The Art Circle of DYPCOE</h1>
+
+        <p class="section-heading">Who Are We?</p>
+        <p>
+            "Vihang Kalamandal" is the official art circle of DYPCOE. We participate in various prestigious state-level theatre and art competitions in and around Pune, including Firodia Karandak, Purushottam Karandak, Symbiosis Karandak, Abhivyakti Karandak, Gadgil Karandak, Gadkari Karandak, and many more. We take pride in our rich heritage and strive to continue this legacy.
+        </p>
+    
+        <p class="section-heading">Our Legacy</p>
+        <p>
+            With a strong presence in the art and theatre scene, Vihang Kalamandal has consistently showcased outstanding performances and artistic excellence. Our participation in these events reflects our commitment to nurturing talent and creativity.
+        </p>
+    
+        <p class="section-heading">Upcoming Event: Kalansh</p>
+        <p>
+            🎉 Join us at "Kalansh," an event where talent meets the spotlight! Organized by Vihang Kalamandal, this event is a golden opportunity for aspiring artists to showcase their skills and passion. Auditions are currently underway, and we're eagerly waiting to witness phenomenal talents grace our stage. ✨<br>
+            <strong>All art forms are welcome!</strong> Whether you're a painter, actor, singer, dancer, or have any other artistic talent, we encourage you to be part of this celebration of creativity.
+        </p>
+    
+        <p class="section-heading">Why Join Us?</p>
+        <p>
+            Vihang Kalamandal is more than just an art circle; it's a community where creativity thrives. By joining us, you'll have the chance to collaborate with like-minded individuals, participate in esteemed competitions, and be part of a legacy that values artistic expression and excellence.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/panclubs/vihang/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.vihang-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.vihang-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.vihang-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.vihang-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .vihang-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .vihang-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .vihang-image img.active {
+        display: block;
+    }
+
+    .vihang-info {
+        color: white;
+    }
+
+    .vihang-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .vihang-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .vihang-info .section-heading {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+</style>

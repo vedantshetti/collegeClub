@@ -1,0 +1,51 @@
+<!-- Navbar Section -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid">
+      <a class="navbar-brand me-auto" href="/collegeclub">
+          <img src="/images/clubimage.jpg" alt="Club Logo" class="navbar-logo">
+      </a>
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Club Logo</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                  <li class="nav-item">
+                      <a class="nav-link active mx-lg-2" aria-current="page" href="/collegeclub">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link mx-lg-2" href="/collegeclub/panclubs">PanClubs</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link mx-lg-2" href="/collegeclub/depatmentclubs">DepartmentClubs</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link mx-lg-2" href="/collegeclub/upcomingevents">UpcomingEvents</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <% if (currUser) { %>
+        <form action="/collegeclub/logout" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-link logout-button">Logout</button>
+        </form>
+    <% } else { %>
+        <a href="/collegeclub/signup" class="signup-button">Signup</a>
+        <a href="/collegeclub/login" class="login-button">Login</a>
+    <% } %>
+    
+      <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  </div>
+</nav>
+<!-- End Navbar -->
+
+<section class="hero-section">
+  <div class="container d-flex align-items-center justify-content-center fs-1 text-white flex-column">
+      <!-- Hero Section Content -->
+  </div>
+</section>
+<!-- End Hero Section -->

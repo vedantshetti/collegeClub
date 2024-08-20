@@ -1,0 +1,65 @@
+<%- layout('layouts/boilerplate') %>
+
+<!-- Introduction Section -->
+<div class="aids-intro">
+    <h1>Hi, Welcome to Artificial Intelligence and Data Science Department!</h1>
+    <p>Explore the amazing world of AI and Data Science with us.</p>
+</div>
+
+<div class="panclub-circles-container">
+    <div class="panclub-item">
+        <a href="/collegeclub/depatmentclubs/aids/s4ds" class="panclub-circle-link">
+            <div class="panclub-circle">
+                <img src="/images/aids/s4ds.jpg" alt="S4DS">
+            </div>
+            <p class="panclub-title">S4DS</p>
+        </a>
+    </div>
+
+    <div class="panclub-item">
+        <a href="/collegeclub/depatmentclubs/aids/isa" class="panclub-circle-link">
+            <div class="panclub-circle">
+                <img src="/images/aids/isa.jpg" alt="ISA">
+            </div>
+            <p class="panclub-title">ISA</p>
+        </a>
+    </div>
+</div>
+
+<style>
+    /* Introduction Section Styling */
+    .aids-intro {
+        text-align: center;
+        margin-top: 50px;
+        color: white;
+        opacity: 0; /* Start hidden */
+        animation: fadeInUp 2s ease-out forwards; /* Animation applied */
+    }
+
+    .aids-intro h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    .aids-intro p {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /* Keyframes for the fade-in and slide-up effect */
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Adjustments for Circle Container */
+    .panclub-circles-container {
+        margin-top: 30px;
+    }
+</style>

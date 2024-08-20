@@ -1,0 +1,200 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="saie-container">
+    <div class="saie-image">
+        <img src="/images/Instru/saie.jpg" alt="SAIE Image 1" class="active">
+
+    </div>
+    
+    <div class="saie-info">
+        <h1>Students Association of Instrumentation Engineering (SAIE)</h1>
+
+        <p class="section-heading">What is SAIE? 🤔</p>
+        <p>
+            The Students Association of Instrumentation Engineering (SAIE) is dedicated to enhancing the academic and professional journey of instrumentation engineering students.<br>
+            SAIE focuses on providing technical knowledge, industry interaction, and opportunities for practical application in the field of instrumentation.<br>
+            The association supports a range of activities, including workshops, seminars, and hands-on projects.
+        </p>
+    
+        <p class="section-heading">Concept of SAIE</p>
+        <p>
+            SAIE is designed to foster a collaborative environment for instrumentation engineering students.<br>
+            It provides a platform for learning through technical events, practical projects, and networking with industry professionals.<br>
+            The association aims to bridge the gap between theoretical knowledge and practical application in instrumentation engineering.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Ideal for Instrumentation Engineering students who wish to gain deeper insights into their field through practical experience and technical knowledge.<br>
+            The association is suitable for those interested in participating in technical events, workshops, and collaborative projects.
+        </p>
+    
+        <p class="section-heading">Why Join SAIE?</p>
+        <p>
+            Gain practical experience and technical skills in instrumentation engineering.<br>
+            Participate in workshops and projects that enhance learning.<br>
+            Network with industry professionals and peers.
+        </p>
+    
+        <p class="section-heading">Other Aspects of SAIE</p>
+        <p>
+            An association that emphasizes practical learning and technical excellence.<br>
+            SAIE organizes various events and activities to support the educational and professional growth of instrumentation engineering students.
+        </p>
+    
+        <p class="section-heading">Key Areas of Focus:</p>
+        <p>
+            <strong>Instrumentation Techniques:</strong> Learn about various instrumentation techniques and their applications.<br>
+            <strong>Control Systems:</strong> Gain knowledge in control systems and automation.<br>
+            <strong>Practical Projects:</strong> Engage in hands-on projects to apply theoretical knowledge.<br>
+            <strong>Technical Workshops:</strong> Participate in workshops to enhance technical skills.<br>
+            <strong>Industry Interaction:</strong> Network with professionals and experts in the field of instrumentation engineering.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/depatmentclubs/instrumentation/saie/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.saie-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.saie-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.saie-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.saie-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .saie-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .saie-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .saie-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .saie-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .saie-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .saie-info p {
+            font-size: 22px;
+        }
+    }
+
+    .saie-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .saie-image img.active {
+        display: block;
+    }
+
+    .saie-info h1 {
+        font-size: 36px; /* Adjust this value as needed */
+        margin-bottom: 20px;
+    }
+
+    .saie-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .saie-info .section-heading {
+        font-size: 50px; /* Increase the size for section headings */
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Blue background color */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+</style>

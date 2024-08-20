@@ -1,0 +1,200 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="igs-container">
+    <div class="igs-image">
+        <img src="/images/civil/igs.jpg" alt="IGS Image 1" class="active">
+
+    </div>
+    
+    <div class="igs-info">
+        <h1>Indian Geotechnical Society (IGS) Student Chapter</h1>
+
+        <p class="section-heading">What is IGS? 🤔</p>
+        <p>
+            The Indian Geotechnical Society (IGS) Student Chapter at DYPCOE is dedicated to advancing knowledge in geotechnical engineering.<br>
+            It offers students opportunities to engage in various activities related to soil mechanics, foundation engineering, and geotechnical investigations.<br>
+            The chapter promotes hands-on learning, industry interaction, and technical expertise in the field of geotechnical engineering.
+        </p>
+    
+        <p class="section-heading">Concept of IGS</p>
+        <p>
+            The IGS Student Chapter provides a platform for civil engineering students to explore the specialized field of geotechnical engineering.<br>
+            It focuses on practical learning through workshops, seminars, and projects.<br>
+            The chapter also aims to bridge the gap between academic learning and real-world applications in geotechnical engineering.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Ideal for Civil Engineering students who are interested in geotechnical engineering and wish to deepen their understanding of soil mechanics and foundation engineering.<br>
+            The chapter is suitable for those eager to participate in technical events, workshops, and collaborative projects.
+        </p>
+    
+        <p class="section-heading">Why Join IGS?</p>
+        <p>
+            Gain specialized knowledge and skills in geotechnical engineering.<br>
+            Participate in hands-on projects and technical workshops.<br>
+            Network with industry professionals and experts in the field.
+        </p>
+    
+        <p class="section-heading">Other Aspects of IGS</p>
+        <p>
+            A club that emphasizes practical learning and technical excellence.<br>
+            IGS organizes various events and activities to foster a deeper understanding of geotechnical engineering.
+        </p>
+    
+        <p class="section-heading">Key Areas of Focus:</p>
+        <p>
+            <strong>Soil Mechanics:</strong> Study the properties and behavior of soil.<br>
+            <strong>Foundation Engineering:</strong> Learn about the design and construction of foundations.<br>
+            <strong>Geotechnical Investigations:</strong> Engage in site investigations and field studies.<br>
+            <strong>Technical Workshops:</strong> Participate in workshops and seminars on geotechnical topics.<br>
+            <strong>Industry Interaction:</strong> Network with professionals and experts in the field of geotechnical engineering.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/departmentclubs/civil/igs/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.igs-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.igs-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.igs-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.igs-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .igs-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .igs-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .igs-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .igs-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .igs-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .igs-info p {
+            font-size: 22px;
+        }
+    }
+
+    .igs-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .igs-image img.active {
+        display: block;
+    }
+
+    .igs-info h1 {
+        font-size: 36px; /* Adjust this value as needed */
+        margin-bottom: 20px;
+    }
+
+    .igs-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .igs-info .section-heading {
+        font-size: 50px; /* Increase the size for section headings */
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Blue background color */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+</style>

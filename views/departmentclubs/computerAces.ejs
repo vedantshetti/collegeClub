@@ -1,0 +1,198 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="aces-container">
+    <div class="aces-image">
+        <img src="/images/cse/aces.jpg" alt="ACES Image 1" class="active">
+    </div>
+    
+    <div class="aces-info">
+        <h1>Association of Computer Engineering Students (ACES)</h1>
+
+        <p class="section-heading">What is ACES? 🤔</p>
+        <p>
+            A student-driven club focused on technical development in computer science.<br>
+            Provides a platform for students to enhance their coding, development, and problem-solving skills.<br>
+            Facilitates learning through workshops, hackathons, and collaborative projects.
+        </p>
+    
+        <p class="section-heading">Concept of ACES</p>
+        <p>
+            Fostering innovation and technical excellence within the computer science community.<br>
+            Equipping students with industry-relevant skills and knowledge.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Geared towards computer science students who are passionate about technology, coding, and innovation.<br>
+            Ideal for those looking to deepen their technical expertise and collaborate on cutting-edge projects.
+        </p>
+    
+        <p class="section-heading">Why ACES?</p>
+        <p>
+            Focuses on practical skill development through hands-on projects and competitions.<br>
+            Provides opportunities for networking, mentorship, and exposure to industry trends.
+        </p>
+    
+        <p class="section-heading">Other Concepts</p>
+        <p>
+            Encourages leadership and teamwork through student-led initiatives.<br>
+            A hub for continuous learning, innovation, and collaboration in computer science.
+        </p>
+    
+        <p class="section-heading">Technologies We Are Interested In:</p>
+        <p>
+            <strong>Web Development:</strong> Build and design websites with the latest frameworks and tools.<br>
+            <strong>Machine Learning:</strong> Delve into AI and data science with practical applications.<br>
+            <strong>Cloud Computing:</strong> Learn about cloud infrastructure and services.<br>
+            <strong>Competitive Programming:</strong> Sharpen problem-solving skills with algorithm challenges.<br>
+            <strong>Cyber Security:</strong> Explore ways to secure systems and protect data.<br>
+            <strong>Software Development:</strong> Engage in full-stack development and software engineering best practices.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/depatmentclubs/computer/aces/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.aces-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.aces-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.aces-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.aces-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .aces-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .aces-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .aces-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .aces-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .aces-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .aces-info p {
+            font-size: 22px;
+        }
+    }
+
+    .aces-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .aces-image img.active {
+        display: block;
+    }
+
+    .aces-info h1 {
+        font-size: 36px; /* Adjust this value as needed */
+        margin-bottom: 20px;
+    }
+
+    .aces-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .aces-info .section-heading {
+        font-size: 50px; /* Increase the size for section headings */
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Blue background color */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+</style>

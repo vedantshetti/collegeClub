@@ -1,0 +1,172 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="offbit-container">
+    <div class="offbit-image">
+        <img src="/images/offbit.jpg" alt="Offbit Club Image 1" class="active">
+        
+    </div>
+    
+    <div class="offbit-info">
+        <h1>Offbit Gaming Club</h1>
+
+        <p class="section-heading">What is Offbit? 🎮</p>
+        <p>
+            A student-led club dedicated to gaming and game development.<br>
+            A platform to explore, create, and compete in the world of gaming.<br>
+            Fosters collaboration and learning in game design, development, and more.
+        </p>
+    
+        <p class="section-heading">Concept of Offbit</p>
+        <p>
+            Dive into the world of game development with a focus on creativity and innovation.<br>
+            Ideal for students passionate about gaming and looking to create their own games.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Designed for students who are gamers at heart and aspiring game developers.<br>
+            Perfect for those looking to learn, collaborate, and bring their gaming ideas to life.
+        </p>
+    
+        <p class="section-heading">Why Join Offbit?</p>
+        <p>
+            Learn the fundamentals of game development.<br>
+            Work on real projects and collaborate with like-minded individuals.<br>
+            Build a portfolio that can help kickstart a career in the gaming industry.
+        </p>
+    
+        <p class="section-heading">Technologies & Tools We Use:</p>
+        <p>
+            <strong>Unity:</strong> Master the most popular game development platform.<br>
+            <strong>Unreal Engine:</strong> Learn to create stunning visuals and immersive experiences.<br>
+            <strong>Blender:</strong> Get hands-on with 3D modeling and animation.<br>
+            <strong>C# & C++:</strong> Dive into programming languages essential for game development.<br>
+            <strong>Game Design Principles:</strong> Understand the art of creating engaging and fun games.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/panclubs/offbit/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.offbit-image img');
+        const totalImages = images.length;
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        let startX = 0;
+        document.querySelector('.offbit-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.offbit-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        document.querySelector('.offbit-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .offbit-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .offbit-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .offbit-info {
+        color: white;
+    }
+
+    .offbit-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .offbit-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .offbit-info .section-heading {
+        font-size: 50px;
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #28a745;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #218838;
+        transform: scale(1.05);
+    }
+
+    @media (min-width: 768px) {
+        .offbit-info p {
+            font-size: 22px;
+        }
+    }
+
+    .offbit-image img {
+        display: none;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .offbit-image img.active {
+        display: block;
+    }
+</style>

@@ -1,0 +1,198 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="enticers-container">
+    <div class="enticers-image">
+        <img src="/images/entc/enticers.jpg" alt="ENTICERS Image 1" class="active">
+    </div>
+    
+    <div class="enticers-info">
+        <h1>(ENTICERS)</h1>
+
+        <p class="section-heading">What is ENTICERS? 🤔</p>
+        <p>
+            ENTICERS is the Electronics and Telecommunication Students Association.<br>
+            A versatile club under the ENTC department.<br>
+            It covers a wide range of activities including technical development, cultural events, sports, management, and treasury-related activities.
+        </p>
+    
+        <p class="section-heading">Concept of ENTICERS</p>
+        <p>
+            ENTICERS fosters a balanced growth of students through diverse activities.<br>
+            Encourages participation in technical, cultural, sports, management, and financial activities.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Ideal for ENTC students looking to excel in both technical and non-technical fields.<br>
+            Perfect for those who wish to develop a well-rounded skill set in engineering and beyond.
+        </p>
+    
+        <p class="section-heading">Why ENTICERS?</p>
+        <p>
+            Offers a platform to enhance technical expertise while also participating in cultural and sports events.<br>
+            Provides leadership and management opportunities through various events and activities.<br>
+            Focuses on comprehensive student development including soft skills and financial management.
+        </p>
+    
+        <p class="section-heading">Other Concepts</p>
+        <p>
+            A hub for innovation, leadership, and creativity in the ENTC department.<br>
+            Supports personal and professional growth through a variety of club activities.
+        </p>
+    
+        <p class="section-heading">Key Areas of Focus:</p>
+        <p>
+            <strong>Technical Development:</strong> Workshops, seminars, and projects to build technical skills.<br>
+            <strong>Cultural Activities:</strong> Events and programs to showcase and enhance cultural talents.<br>
+            <strong>Sports:</strong> Encourages physical fitness and teamwork through sports activities.<br>
+            <strong>Management:</strong> Provides opportunities to develop organizational and leadership skills.<br>
+            <strong>Treasurer Activities:</strong> Hands-on experience in managing financial aspects of the club.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/departmentclubs/entc/enticers/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.enticers-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.enticers-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.enticers-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.enticers-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .enticers-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .enticers-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .enticers-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .enticers-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .enticers-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .enticers-info p {
+            font-size: 22px;
+        }
+    }
+
+    .enticers-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .enticers-image img.active {
+        display: block;
+    }
+
+    .enticers-info h1 {
+        font-size: 36px; /* Adjust this value as needed */
+        margin-bottom: 20px;
+    }
+
+    .enticers-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .enticers-info .section-heading {
+        font-size: 50px; /* Increase the size for section headings */
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Blue background color */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+</style>

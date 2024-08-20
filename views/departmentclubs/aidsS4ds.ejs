@@ -1,0 +1,199 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="s4ds-container">
+    <div class="s4ds-image">
+        <img src="/images/aids/s4ds.jpg" alt="S4DS Image 1" class="active">
+    </div>
+    
+    <div class="s4ds-info">
+        <h1>S4DS - Students for Data Science</h1>
+
+        <p class="section-heading">What is S4DS? 🤔</p>
+        <p>
+            S4DS is a club under the Artificial Intelligence and Data Science (AIDS) department.<br>
+            Focuses on key areas like Data Science, Data Analytics, Power BI, and more.<br>
+            Provides a platform for students to enhance their skills in data-driven technologies.
+        </p>
+    
+        <p class="section-heading">Concept of S4DS</p>
+        <p>
+            Aims to build expertise in the field of Data Science and Analytics.<br>
+            Promotes hands-on learning, project-based experience, and real-world applications.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Students interested in Data Science, Machine Learning, Data Analytics, and related fields.<br>
+            Ideal for those looking to deepen their understanding of data-driven technologies.
+        </p>
+    
+        <p class="section-heading">Why S4DS?</p>
+        <p>
+            Focuses on practical experience through projects and workshops.<br>
+            Provides access to tools like Power BI and platforms for data analytics.<br>
+            Enhances employability by building expertise in in-demand technologies.
+        </p>
+    
+        <p class="section-heading">Other Concepts</p>
+        <p>
+            Encourages collaboration on data-driven projects.<br>
+            Provides opportunities for networking and professional growth in the field of AI and Data Science.
+        </p>
+    
+        <p class="section-heading">Technologies We Are Interested In:</p>
+        <p>
+            <strong>Data Science:</strong> Explore the science of data and its applications.<br>
+            <strong>Data Analytics:</strong> Learn how to analyze data and extract meaningful insights.<br>
+            <strong>Machine Learning:</strong> Develop models that learn from data and improve over time.<br>
+            <strong>Power BI:</strong> Master data visualization and business intelligence tools.<br>
+            <strong>Artificial Intelligence:</strong> Dive into AI techniques and their real-world applications.<br>
+            <strong>Big Data:</strong> Understand the challenges and opportunities of working with large datasets.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/depatmentclubs/aids/s4ds/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.s4ds-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.s4ds-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.s4ds-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.s4ds-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .s4ds-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .s4ds-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .s4ds-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .s4ds-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .s4ds-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .s4ds-info p {
+            font-size: 22px;
+        }
+    }
+
+    .s4ds-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .s4ds-image img.active {
+        display: block;
+    }
+
+    .s4ds-info h1 {
+        font-size: 36px; /* Adjust this value as needed */
+        margin-bottom: 20px;
+    }
+
+    .s4ds-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .s4ds-info .section-heading {
+        font-size: 50px; /* Increase the size for section headings */
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Blue background color */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+</style>

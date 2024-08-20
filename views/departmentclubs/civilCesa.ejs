@@ -1,0 +1,199 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="cesa-container">
+    <div class="cesa-image">
+        <img src="/images/civil/cesa.jpg" alt="CESA Image 1" class="active">
+    </div>
+    
+    <div class="cesa-info">
+        <h1>Civil Engineering Students Association (CESA)</h1>
+
+        <p class="section-heading">What is CESA? 🤔</p>
+        <p>
+            The Civil Engineering Students Association (CESA) is a dedicated club within the Civil Engineering department.<br>
+            It focuses on enhancing students' practical knowledge and skills in civil engineering through various activities and events.<br>
+            CESA also promotes a balanced development of students by encouraging participation in sports, cultural activities, and more.
+        </p>
+    
+        <p class="section-heading">Concept of CESA</p>
+        <p>
+            CESA aims to bridge the gap between theoretical learning and practical application in civil engineering.<br>
+            The club provides a platform for students to engage in hands-on projects, workshops, and seminars that focus on civil engineering practices.<br>
+            CESA also emphasizes the importance of sports, cultural, and social activities in the holistic development of its members.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Ideal for Civil Engineering students who are passionate about their field and looking to gain practical experience through projects and events.<br>
+            CESA is also a great fit for students who enjoy balancing their academic pursuits with extracurricular activities like sports and cultural events.
+        </p>
+    
+        <p class="section-heading">Why Join CESA?</p>
+        <p>
+            CESA offers unique opportunities to apply civil engineering concepts in real-world scenarios.<br>
+            The club's focus on both academic excellence and extracurricular involvement provides a well-rounded experience for its members.<br>
+            CESA also fosters a sense of community and collaboration among civil engineering students.
+        </p>
+    
+        <p class="section-heading">Other Aspects of CESA</p>
+        <p>
+            A club that encourages both academic and personal growth.<br>
+            CESA organizes events that cover a wide range of interests, including technical workshops, sports competitions, and cultural programs.
+        </p>
+    
+        <p class="section-heading">Key Areas of Focus:</p>
+        <p>
+            <strong>Civil Engineering Projects:</strong> Engage in hands-on civil engineering projects and practical applications.<br>
+            <strong>Workshops and Seminars:</strong> Participate in workshops and seminars led by industry professionals.<br>
+            <strong>Sports Activities:</strong> Stay active and competitive with various sports events organized by CESA.<br>
+            <strong>Cultural Events:</strong> Celebrate diversity and creativity through cultural programs.<br>
+            <strong>Networking:</strong> Connect with peers, faculty, and industry professionals to build a strong professional network.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/departmentclubs/civil/cesa/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.cesa-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.cesa-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.cesa-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.cesa-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .cesa-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .cesa-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .cesa-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .cesa-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .cesa-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .cesa-info p {
+            font-size: 22px;
+        }
+    }
+
+    .cesa-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .cesa-image img.active {
+        display: block;
+    }
+
+    .cesa-info h1 {
+        font-size: 36px; /* Adjust this value as needed */
+        margin-bottom: 20px;
+    }
+
+    .cesa-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .cesa-info .section-heading {
+        font-size: 50px; /* Increase the size for section headings */
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Blue background color */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+</style>

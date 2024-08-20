@@ -1,0 +1,156 @@
+<%- layout('layouts/boilerplate') %>
+
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="form-container bg-light p-4 rounded shadow">
+                <h1 class="text-center mb-4">Apply for Offbit</h1>
+                <p class="text-center mb-4">Please fill out the form below to apply for the Offbit Club. This club is open to students from all departments. Make sure to include your project links and upload your resume.</p>
+
+                <form id="panclubsOffbitForm" class="needs-validation" action="/collegeclub/panclubs/offbit/apply" method="post" enctype="multipart/form-data" novalidate>
+                    <!-- Personal Information -->
+                    <div class="form-group">
+                        <label for="fullName">Full Name:</label>
+                        <input type="text" id="fullName" name="fullName" class="form-control" required>
+                        <div class="invalid-feedback">Name is necessary.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                        <div class="invalid-feedback">A valid email address is required.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" required>
+                        <div class="invalid-feedback">A valid phone number is required.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Department:</label>
+                        <select id="department" name="department" class="form-control" required>
+                            <option value="" disabled selected>Select your department</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Electronics and Telecommunication">Electronics and Telecommunication</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Instrumentation Engineering">Instrumentation Engineering</option>
+                            <option value="Robotics and Automation">Robotics and Automation</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Artificial Intelligence and Data Science">Artificial Intelligence and Data Science</option>
+                        </select>
+                        <div class="invalid-feedback">Please select your department.</div>
+                    </div>
+
+                    <!-- Role Selection -->
+                    <div class="form-group">
+                        <label for="role">Role Applying For:</label>
+                        <select id="role" name="role" class="form-control" required>
+                            <option value="" disabled selected>Select the role you are applying for</option>
+                            <option value="Technical Lead">Technical Lead</option>
+                            <option value="Media Lead">Media Lead</option>
+                            <option value="Sports Lead">Sports Lead</option>
+                            <option value="Cultural Lead">Cultural Lead</option>
+                            <option value="PR Lead">PR Lead</option>
+                            <option value="Documentation Lead">Documentation Lead</option>
+                            <option value="Treasurer Lead">Treasurer Lead</option>
+                        </select>
+                        <div class="invalid-feedback">Please select the role you are applying for.</div>
+                    </div>
+
+                    <!-- Academic Information -->
+                    <div class="form-group">
+                        <label for="year">Year of Study:</label>
+                        <select id="year" name="year" class="form-control" required>
+                            <option value="" disabled selected>Select your year of study</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                        </select>
+                        <div class="invalid-feedback">Please select your year of study.</div>
+                    </div>
+
+                    <!-- Project Link -->
+                    <div class="form-group">
+                        <label for="projectLink">Project Link:</label>
+                        <input type="url" id="projectLink" name="projectLink" class="form-control" placeholder="e.g., https://github.com/yourproject" >
+                        <div class="invalid-feedback">A valid project link is required.</div>
+                    </div>
+
+                    <!-- Resume Upload -->
+                    <div class="form-group">
+                        <label for="resume">Upload Resume:</label>
+                        <input type="file" id="resume" name="resume" class="form-control-file" accept=".pdf,.doc,.docx" >
+                        <div class="invalid-feedback">Resume upload is required.</div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Bootstrap form validation
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+
+<style>
+    .form-container {
+        background-color: #f9f9f9; /* Light background color */
+        color: #333; /* Dark text color */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+    .invalid-feedback {
+        color: #dc3545;
+    }
+</style>
