@@ -1,0 +1,198 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="itesa-container">
+    <div class="itesa-image">
+        <img src="/images/IT/itesa.jpg" alt="ITESA Image 1" class="active">
+    </div>
+    
+    <div class="itesa-info">
+        <h1>Information Technology Engineering Students Association</h1>
+
+        <p class="section-heading">What is ITESA? 🤔</p>
+        <p>
+            ITESA is the Information Technology Engineering Students Association.<br>
+            A dynamic club under the Information Technology department.<br>
+            It focuses on technical development, sports, management, cultural activities, and soft skills enhancement.
+        </p>
+    
+        <p class="section-heading">Concept of ITESA</p>
+        <p>
+            ITESA promotes the holistic development of students by offering a variety of activities.<br>
+            Encourages active participation in technical skill-building, sports, management, cultural activities, and soft skills training.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Students interested in a balanced growth across technical, managerial, and soft skills.<br>
+            Ideal for those who want to excel in IT while also engaging in sports and cultural activities.
+        </p>
+    
+        <p class="section-heading">Why ITESA?</p>
+        <p>
+            Provides opportunities to enhance technical skills relevant to Information Technology.<br>
+            Encourages participation in sports and cultural events to promote overall personality development.<br>
+            Focuses on soft skills and management training to prepare students for the professional world.
+        </p>
+    
+        <p class="section-heading">Other Concepts</p>
+        <p>
+            A platform for personal and professional growth through diverse activities.<br>
+            Enhances employability by fostering a well-rounded skill set in IT and beyond.
+        </p>
+    
+        <p class="section-heading">Key Areas of Focus:</p>
+        <p>
+            <strong>Technical Development:</strong> Workshops and projects to build IT skills.<br>
+            <strong>Sports:</strong> Participation in sports activities to promote teamwork and fitness.<br>
+            <strong>Management:</strong> Training and opportunities to develop leadership and organizational skills.<br>
+            <strong>Cultural Activities:</strong> Engage in cultural events to promote creativity and artistic expression.<br>
+            <strong>Soft Skills:</strong> Workshops and training sessions to improve communication and interpersonal skills.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/departmentclubs/it/itesa/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.itesa-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.itesa-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.itesa-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.itesa-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .itesa-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .itesa-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .itesa-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .itesa-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .itesa-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .itesa-info p {
+            font-size: 22px;
+        }
+    }
+
+    .itesa-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .itesa-image img.active {
+        display: block;
+    }
+
+    .itesa-info h1 {
+        font-size: 36px; /* Adjust this value as needed */
+        margin-bottom: 20px;
+    }
+
+    .itesa-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .itesa-info .section-heading {
+        font-size: 50px; /* Increase the size for section headings */
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Blue background color */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+</style>

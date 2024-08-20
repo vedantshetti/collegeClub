@@ -1,0 +1,199 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="prediators-container">
+    <div class="prediators-image">
+        <img src="/images/mechanical/prediators.jpg" alt="Prediators Image 1" class="active">
+    </div>
+    
+    <div class="prediators-info">
+        <h1>Prediators Club</h1>
+
+        <p class="section-heading">What is Prediators? 🤔</p>
+        <p>
+            The Prediators club is a premier group within the Mechanical Engineering department, focusing on vehicle building and engineering.<br>
+            This club has achieved numerous top rankings in vehicle competitions across various disciplines.<br>
+            It serves as a platform for students passionate about automotive engineering and innovation.
+        </p>
+    
+        <p class="section-heading">Concept of Prediators</p>
+        <p>
+            Prediators is dedicated to designing, building, and testing vehicles, from concept to competition.<br>
+            The club offers hands-on experience in mechanical design, fabrication, and engineering, preparing students for careers in the automotive industry.<br>
+            Prediators also emphasizes teamwork, leadership, and innovation.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Ideal for Mechanical Engineering students with a passion for automotive engineering, vehicle design, and hands-on project work.<br>
+            Perfect for those who aspire to excel in vehicle competitions and advance their engineering skills.
+        </p>
+    
+        <p class="section-heading">Why Prediators?</p>
+        <p>
+            Prediators provides a real-world platform for applying mechanical engineering principles in vehicle design and competition.<br>
+            The club's focus on practical skills, innovation, and competition success makes it a valuable part of the Mechanical Engineering department.<br>
+            Prediators members gain experience in all aspects of vehicle engineering, from design to performance analysis.
+        </p>
+    
+        <p class="section-heading">Other Concepts</p>
+        <p>
+            A leading group in vehicle innovation and competition.<br>
+            Encourages continuous learning, innovation, and excellence in automotive engineering.
+        </p>
+    
+        <p class="section-heading">Key Areas of Focus:</p>
+        <p>
+            <strong>Vehicle Design:</strong> Engage in the design and engineering of innovative vehicles.<br>
+            <strong>Fabrication:</strong> Gain hands-on experience in the fabrication and assembly of vehicles.<br>
+            <strong>Competition Preparation:</strong> Prepare vehicles for national and international competitions.<br>
+            <strong>Teamwork and Leadership:</strong> Develop skills in collaboration, leadership, and project management.<br>
+            <strong>Innovation:</strong> Drive innovation in automotive engineering through cutting-edge projects and competitions.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/departmentclubs/mechanical/prediators/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.prediators-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.prediators-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.prediators-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.prediators-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .prediators-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .prediators-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .prediators-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .prediators-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .prediators-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .prediators-info p {
+            font-size: 22px;
+        }
+    }
+
+    .prediators-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .prediators-image img.active {
+        display: block;
+    }
+
+    .prediators-info h1 {
+        font-size: 36px; /* Adjust this value as needed */
+        margin-bottom: 20px;
+    }
+
+    .prediators-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .prediators-info .section-heading {
+        font-size: 50px; /* Increase the size for section headings */
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Blue background color */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+</style>

@@ -1,0 +1,199 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="sara-container">
+    <div class="sara-image">
+        <img src="/images/robotics/sara.jpg" alt="SARA Image 1" class="active">
+    </div>
+    
+    <div class="sara-info">
+        <h1>Students' Association of Robotics & Automation (SARA)</h1>
+
+        <p class="section-heading">What is SARA? 🤔</p>
+        <p>
+            The Students' Association of Robotics & Automation (SARA) is dedicated to advancing knowledge and skills in robotics and automation.<br>
+            SARA provides a platform for students to explore, develop, and execute innovative projects, including drone building and other automation technologies.<br>
+            The association supports hands-on learning through workshops, competitions, and collaborative projects.
+        </p>
+    
+        <p class="section-heading">Concept of SARA</p>
+        <p>
+            SARA focuses on elevating the future of robotics and automation by fostering creativity and technical expertise.<br>
+            It offers opportunities for practical application of robotics knowledge, including the development of drones and other automated systems.<br>
+            The association aims to empower students with the skills and experience needed to excel in the field of robotics and automation.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Ideal for students interested in robotics and automation, including those eager to work on cutting-edge projects like drone technology.<br>
+            SARA is suitable for those looking to enhance their technical skills and gain practical experience in robotics.
+        </p>
+    
+        <p class="section-heading">Why Join SARA?</p>
+        <p>
+            Engage in exciting robotics projects and competitions.<br>
+            Gain hands-on experience with automation technologies.<br>
+            Collaborate with peers and industry professionals.
+        </p>
+    
+        <p class="section-heading">Other Aspects of SARA</p>
+        <p>
+            An association that emphasizes innovation and practical learning in robotics.<br>
+            SARA organizes various events to support the development and execution of robotics projects.
+        </p>
+    
+        <p class="section-heading">Key Areas of Focus:</p>
+        <p>
+            <strong>Drone Building:</strong> Explore the latest technologies in drone development.<br>
+            <strong>Automation Systems:</strong> Learn about automation systems and their applications.<br>
+            <strong>Robotics Competitions:</strong> Participate in competitions to test and showcase your skills.<br>
+            <strong>Workshops:</strong> Engage in workshops to gain practical knowledge and experience.<br>
+            <strong>Collaborative Projects:</strong> Work on innovative projects with fellow students and professionals.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/departmentclubs/robotics/sara/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.sara-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.sara-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.sara-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.sara-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .sara-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .sara-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .sara-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .sara-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .sara-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .sara-info p {
+            font-size: 22px;
+        }
+    }
+
+    .sara-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .sara-image img.active {
+        display: block;
+    }
+
+    .sara-info h1 {
+        font-size: 36px; /* Adjust this value as needed */
+        margin-bottom: 20px;
+    }
+
+    .sara-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .sara-info .section-heading {
+        font-size: 50px; /* Increase the size for section headings */
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Blue background color */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+</style>
