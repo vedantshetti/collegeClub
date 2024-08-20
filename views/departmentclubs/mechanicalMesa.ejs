@@ -1,0 +1,199 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="mesa-container">
+    <div class="mesa-image">
+        <img src="/images/mechanical/mesa.jpg" alt="MESA Image 1" class="active">
+    </div>
+    
+    <div class="mesa-info">
+        <h1>Mechanical Engineering Students Association (MESA)</h1>
+
+        <p class="section-heading">What is MESA? 🤔</p>
+        <p>
+            The Mechanical Engineering Students Association (MESA) is the heart of the Mechanical Engineering department.<br>
+            A dynamic club focused on fostering innovation and passion in mechanical engineering.<br>
+            MESA engages students in various technical, cultural, sports, and management activities.
+        </p>
+    
+        <p class="section-heading">Concept of MESA</p>
+        <p>
+            MESA is driven by the passion of its members and powered by their innovation.<br>
+            It aims to enhance the skills of mechanical engineering students through hands-on projects, workshops, and events.<br>
+            MESA also promotes a balanced development with its focus on cultural, sports, and management activities.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Tailored for Mechanical Engineering students who are enthusiastic about applying their knowledge in real-world scenarios.<br>
+            Perfect for those who want to develop their technical skills while also engaging in extracurricular activities.
+        </p>
+    
+        <p class="section-heading">Why MESA?</p>
+        <p>
+            MESA offers a comprehensive platform for the overall development of mechanical engineering students.<br>
+            It provides opportunities to participate in technical projects, cultural events, sports competitions, and management activities.<br>
+            MESA helps students grow both technically and personally, preparing them for their future careers.
+        </p>
+    
+        <p class="section-heading">Other Concepts</p>
+        <p>
+            A hub of innovation and creativity for mechanical engineers.<br>
+            Encourages teamwork, leadership, and continuous learning through diverse activities and events.
+        </p>
+    
+        <p class="section-heading">Key Areas of Focus:</p>
+        <p>
+            <strong>Technical Development:</strong> Engage in hands-on projects, workshops, and technical challenges.<br>
+            <strong>Cultural Activities:</strong> Participate in cultural events that enhance creativity and collaboration.<br>
+            <strong>Sports:</strong> Foster a spirit of competition and teamwork through sports events.<br>
+            <strong>Management:</strong> Develop leadership and management skills through organizing and participating in various activities.<br>
+            <strong>Innovation:</strong> Drive innovation in mechanical engineering with a focus on practical applications.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/departmentclubs/mechanical/mesa/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.mesa-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.mesa-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.mesa-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.mesa-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .mesa-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .mesa-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .mesa-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .mesa-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .mesa-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .mesa-info p {
+            font-size: 22px;
+        }
+    }
+
+    .mesa-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .mesa-image img.active {
+        display: block;
+    }
+
+    .mesa-info h1 {
+        font-size: 36px; /* Adjust this value as needed */
+        margin-bottom: 20px;
+    }
+
+    .mesa-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .mesa-info .section-heading {
+        font-size: 50px; /* Increase the size for section headings */
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Blue background color */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+</style>

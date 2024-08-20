@@ -1,0 +1,198 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="acm-container">
+    <div class="acm-image">
+        <img src="/images/cse/acm.jpg" alt="ACM Image 1" class="active">
+    </div>
+    
+    <div class="acm-info">
+        <h1>Pradnyan ACM Student Chapter - DYPCOE</h1>
+
+        <p class="section-heading">What is ACM? 🤔</p>
+        <p>
+            ACM is a global organization that supports educational institutions worldwide.<br>
+            It provides a platform to enhance technical intelligence and promote computing as a science and profession.<br>
+            The Pradnyan ACM Student Chapter at DYPCOE aims to cultivate innovation, learning, and leadership among students.
+        </p>
+    
+        <p class="section-heading">Concept of ACM</p>
+        <p>
+            Encourages students to engage in computing and technical advancements.<br>
+            Offers resources and opportunities for professional development and networking.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Students passionate about computing, coding, and technology.<br>
+            Ideal for those looking to contribute to and grow within the global computing community.
+        </p>
+    
+        <p class="section-heading">Why ACM?</p>
+        <p>
+            Provides access to a global network of professionals, resources, and educational opportunities.<br>
+            Focuses on building leadership skills and advancing technical expertise.
+        </p>
+    
+        <p class="section-heading">Other Concepts</p>
+        <p>
+            Fosters collaboration and innovation through various events, workshops, and conferences.<br>
+            A hub for continuous learning, professional growth, and networking in the field of computing.
+        </p>
+    
+        <p class="section-heading">Technologies We Are Interested In:</p>
+        <p>
+            <strong>Web Development:</strong> Explore cutting-edge web technologies and practices.<br>
+            <strong>Data Science:</strong> Dive into data analysis, machine learning, and AI.<br>
+            <strong>Cloud Computing:</strong> Learn about cloud technologies and their applications.<br>
+            <strong>Cyber Security:</strong> Focus on the principles and practices of securing digital systems.<br>
+            <strong>Software Engineering:</strong> Embrace best practices in software design and development.<br>
+            <strong>Networking:</strong> Understand the fundamentals of network architecture and security.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/depatmentclubs/computer/acm/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.acm-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.acm-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.acm-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.acm-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .acm-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .acm-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .acm-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .acm-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .acm-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .acm-info p {
+            font-size: 22px;
+        }
+    }
+
+    .acm-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .acm-image img.active {
+        display: block;
+    }
+
+    .acm-info h1 {
+        font-size: 36px; /* Adjust this value as needed */
+        margin-bottom: 20px;
+    }
+
+    .acm-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .acm-info .section-heading {
+        font-size: 50px; /* Increase the size for section headings */
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Blue background color */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+</style>

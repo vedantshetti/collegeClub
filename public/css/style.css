@@ -1,0 +1,568 @@
+/* Ensure the body and html take up full height */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Use flexbox to make body a flex container */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content should expand to fill available space */
+.main-content {
+    flex: 1;
+}
+
+/* Footer styles */
+footer {
+    background-color: #c8bebe;
+    padding: 1rem 0;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: -200px; /* Adjust this value to move footer down */
+}
+
+/* Adding spacing between social media icons */
+.f-info-socials a {
+    margin: 0 10px; /* Add horizontal space between icons */
+    color: black; /* Set icon color to black */
+}
+
+.f-info-socials a:first-child {
+    margin-left: 0; /* Remove left margin from the first icon */
+}
+
+.f-info-socials a:last-child {
+    margin-right: 0; /* Remove right margin from the last icon */
+}
+
+/* Background image settings */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: url('/images/background.jpg') no-repeat center center fixed;
+    background-size: cover; /* Cover the entire viewport */
+    background-attachment: fixed; /* Fix the background image */
+    overflow: auto; /* Allow scrolling if content exceeds viewport height */
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Ensure other styles are not disrupted */
+.navbar {
+    background-color: #c8bebe;
+    display: flex;
+    justify-content: space-between; /* Distribute space between elements */
+    align-items: center; /* Center items vertically */
+    height: 80px;
+    padding: 0.5rem;
+    margin: 0 20px; /* Reduce margin for better fit */
+    border-radius: 16px;
+}
+
+.navbar-brand {
+    font-weight: 500;
+    color: #009970;
+    font-size: 24px;
+    transition: 0.3s color;
+}
+
+.signup-button {
+    background-color: #009970;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+    margin-right: 15px;
+}
+
+.signup-button:hover {
+    background-color: #00b383;
+}
+
+.login-button {
+    background-color: rgb(69, 66, 66);
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.logout-button{
+    background-color: rgb(69, 66, 66);
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+
+.google-btn {
+    color: #fff;
+    margin-top: 20px;
+}
+
+.logout-button:hover {
+    background-color: black;
+}
+
+/* Navbar toggler styles */
+.navbar-toggler {
+    border: none;
+    font-size: 1.25rem;
+    color: white; /* Set the toggler icon color to white */
+    background-color: transparent; /* Ensure the background is transparent */
+    margin-left: auto; /* Push toggler to the right */
+    padding: 0.5rem 1rem; /* Add padding for better clickability */
+}
+
+.navbar-toggler:focus, .btn-close:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+/* Optional: Add a hover effect for better visibility */
+.navbar-toggler:hover {
+    color: #f8f9fa; /* Slightly lighter white on hover */
+}
+
+/* If using a toggler icon with a span inside, add styles for visibility */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.nav-link {
+    color: #667773;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link:hover, .nav-link:active {
+    color: #000000;
+}
+
+@media (min-width: 991px) {
+    .nav-link::before {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: black;
+        visibility: hidden;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .nav-link:hover::before, .nav-link.active::before {
+        width: 100%;
+        visibility: visible;
+    }
+
+    
+}
+
+
+.hero-section {
+    background: url('/images/background.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.hero-section::before {
+    background-color: rgba(0,0,0,0.6);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.navbar-logo {
+    max-height: 60px;
+    width: auto;
+    border-radius: 3rem;
+}
+
+.pt-5 {
+    padding-top: 0 !important;
+}
+
+.mt-5 {
+    margin-top: 0rem !important;
+}
+
+/* Ensure the body scrolls if content overflows */
+body {
+    overflow: auto;
+}
+
+/* Footer */
+.f-info-links a {
+    text-decoration: none;
+    color: #222222 !important;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info-links, .f-info-socials, .f-info-brand {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.f-info-socials i {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info {
+    text-align: center;
+    height: 6rem;
+    display: flex;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Circle styles */
+.circle {
+    width: 150px; /* Default size for smaller screens */
+    height: 150px; /* Default size for smaller screens */
+    border-radius: 50%;
+    background-color: #786969; /* Original circle color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.circle-link {
+    text-decoration: none;
+    margin: 0 20px; /* Default spacing for smaller screens */
+}
+
+/* Hover effect */
+.circle:hover {
+    transform: scale(1.05);
+    background-color: black; /* Change color on hover */
+}
+
+/* Intro Section Styles */
+.intro-section {
+    margin: 40px 0; /* Space above and below the intro section */
+    text-align: center; /* Center-align text */
+}
+
+.intro-section h1 {
+    font-size: 3rem; /* Increase font size for the heading */
+    color: white; /* White color for the text */
+    margin-bottom: 10px; /* Space below the heading */
+    animation: fadeIn 1s ease-in-out;
+    margin-top: -62px; /* Fade-in effect */
+}
+
+.intro-section p {
+    font-size: 1.5rem; /* Increase font size for the paragraph */
+    color: white; /* White color for the text */
+    margin-top: 0; /* Remove margin on top */
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Ensure the circles stack vertically on small screens */
+/* Ensure the circles stack vertically on small screens */
+/* Ensure the circles stack vertically on small screens */
+@media (max-width: 767px) {
+    .row {
+        display: flex; /* Ensure flexbox is used */
+        flex-direction: column; /* Stack circles vertically */
+        align-items: center; /* Center circles horizontally */
+        margin-top: 20px; /* Space above the row */
+
+    }
+
+    .navbar {
+        position: fixed;
+        top: 4px;
+        width: 100%;
+        z-index: 1000;
+        left: -19px;
+    }
+
+    .circle-link {
+        margin-bottom: 4px; /* Space between circles */
+    }
+    .circle-link {
+        text-decoration: none;
+        margin: 0 44px 44px 44px;
+    }
+
+    .main-content {
+        margin-top: 120px; /* Increase space between navbar and circles on small screens */
+    }
+
+    .intro-section {
+        margin-top: 20px; /* Adjust top margin for intro section on small screens */
+    }
+
+    /* Hover effect for small screens */
+    .circle:hover {
+        background-color: #333; /* Change to a different color on hover */
+    }
+
+    .d-flex {
+        display: grid !important; /* Use grid layout */
+    }
+
+    .circle {
+        width: 250px; /* Increase size for small screens */
+        height: 250px; /* Increase size for small screens */
+    }
+
+    .justify-content-center {
+        justify-content: space-between !important;
+    }
+}
+
+/* Ensure the circles are in a horizontal line on large screens */
+/* Ensure the circles are in a horizontal line on large screens */
+@media (min-width: 768px) {
+    .circle {
+        width: 350px; /* Larger size for larger screens */
+        height: 350px; /* Larger size for larger screens */
+    }
+
+    .navbar {
+        position: fixed;
+        top: 6px;
+        width: 100%;
+        z-index: 1000;
+        left: -19px;
+    }
+
+    .circle-link {
+        margin: 0 90px; /* Increased spacing between circles for larger screens */
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row; /* Ensure circles are in a horizontal line */
+        justify-content: center; /* Center circles horizontally */
+        padding-left: 20px; /* Add padding to shift circles slightly to the left */
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column; /* Stack intro and circles vertically */
+        align-items: center; /* Center content horizontally */
+        margin-top: 40px; /* Add space between navbar and intro section */
+        padding-left: 0; /* Reset left padding for large screens */
+    }
+
+    .intro-section {
+        margin-top: 60px; /* Space above the intro section to ensure it appears below the navbar */
+    }
+}
+
+.row {
+    margin-right: calc(18.5* var(--bs-gutter-x));
+}
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+
+/* Flash message container */
+.flash-messages {
+    margin-top: 70px; /* Adjust based on navbar height */
+    max-width: 600px; /* Adjust the max-width as needed */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flash-messages .alert {
+    margin-bottom: -4rem; /* Space between messages */
+    margin-top: 2rem;
+}
+
+.alert {
+    --bs-alert-padding-x: 8rem;
+    --bs-alert-padding-y: 2rem;
+}
+
+.flash-messages .alert p {
+    margin: 0; /* Ensure no extra margin around messages */
+}
+
+.alert-dismissible .btn-close {
+    position: absolute;
+    top: 18px;
+    right: 1px;
+    z-index: 2;
+    padding: 1.25rem 1rem;
+}
+
+.alert-dismissible {
+    padding-right: 11rem;
+}
+
+/* Media query for small screens */
+@media (max-width: 767px) {
+    .flash-messages {
+        max-width: 90%; /* Decrease width on small screens */
+    }
+
+    .alert {
+        --bs-alert-padding-x: 4rem; /* Adjust padding for smaller screens */
+        --bs-alert-padding-y: 1rem;
+    }
+
+    .alert-dismissible {
+        padding-right: 6rem;
+         /* Adjust padding for smaller screens */
+    }
+
+    .alert-dismissible .btn-close {
+        position: absolute;
+        top: 4px;
+        right: 1px;
+        z-index: 2;
+        padding: 1.25rem 1rem;
+    }
+}
+
+
+
+.signup-form {
+    margin-top: -122px; /* Decrease the top margin to bring it up */
+    padding-top: 20px; /* Optional: Adjust padding if needed */
+}
+
+
+
+
+/* ...................................................for ........ panclubs.ejs.............................. */
+
+/* Container for circles */
+.panclub-circles-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 70px;
+    margin-bottom: 50px;
+  }
+  
+  /* Individual circle item */
+  .panclub-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    flex-basis: calc(33.333% - 20px); /* Adjust width to fit 3 items per row */
+  }
+  
+  /* Circle styling */
+  .panclub-circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Hide overflow */
+    margin-bottom: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+    z-index: 1; /* Ensure the circle is below the text */
+  }
+  
+  /* Image inside circles */
+  .panclub-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the circle */
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Hover effect */
+  .panclub-circle:hover {
+    transform: scale(1.4);
+    z-index: 2; /* Make sure the circle stays above the text */
+  }
+  
+  /* Title styling */
+  .panclub-title {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    z-index: 1; /* Ensure text stays above the circle */
+  }
+  
+  /* Link styling */
+  .panclub-circle-link {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Ensure hover effect works on link */
+  .panclub-circle-link:hover .panclub-circle {
+    transform: scale(1.4);
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .panclub-item {
+      flex-basis: 100%; /* Full width on small screens */
+    }
+  
+    .panclub-circle {
+      width: 200px; /* Increased size */
+      height: 200px; /* Increased size */
+      margin-bottom: 20px; /* Adjusted margin for better spacing */
+    }
+  
+    .panclub-title {
+      font-size: 22px; /* Adjusted font size for better readability */
+    }
+  }
+  
+
+
+/* 
+................................................................................................................... gdsc */
+
+
+

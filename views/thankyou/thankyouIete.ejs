@@ -1,0 +1,73 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-8">
+        <div class="bg-light p-5 rounded shadow text-center animate__animated animate__fadeInDown">
+            <h1 class="display-4">Thank You!</h1>
+            <p class="lead">Your form has been successfully submitted.</p>
+            <p>We will get back to you soon!</p>
+            <a href="/collegeclub/departmentclubs/entc/iete" class="btn btn-primary mt-4">Back to IETE</a>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<style>
+    body {
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+
+    .bg-light {
+        background-color: #ffffff !important;
+    }
+
+    .rounded {
+        border-radius: 15px;
+    }
+
+    .shadow {
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .display-4 {
+        font-weight: 700;
+        color: #343a40;
+    }
+
+    .lead {
+        font-size: 18px;
+        color: #6c757d;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+    @media (max-width: 576px) {
+        .container {
+            margin-top: 20px;
+        }
+        .bg-light {
+            padding: 3rem 1.5rem;
+        }
+        .display-4 {
+            font-size: 28px;
+        }
+        .lead {
+            font-size: 16px;
+        }
+    }
+</style>

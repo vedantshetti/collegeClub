@@ -1,0 +1,50 @@
+<%- layout('layouts/boilerplate') %>
+
+<!-- Animated Introduction -->
+<div class="intro-text">
+    <h1>Hi! Welcome to the Robotics and Automation Department</h1>
+    <p>Explore the future of technology with our clubs and initiatives!</p>
+</div>
+
+<div class="panclub-circles-container">
+    <div class="panclub-item">
+        <a href="/collegeclub/departmentclubs/robotics/sara" class="panclub-circle-link">
+            <div class="panclub-circle">
+                <img src="/images/robotics/sara.jpg" alt="SARA">
+            </div>
+            <p class="panclub-title">SARA</p>
+        </a>
+    </div>
+</div>
+
+<style>
+    .intro-text {
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        margin: 30px 0;
+        opacity: 0;
+        animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    .intro-text h1 {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+
+    .intro-text p {
+        font-size: 24px;
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+</style>

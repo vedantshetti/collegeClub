@@ -1,0 +1,216 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="gdsc-container">
+    <div class="gdsc-image">
+        <img src="/images/gdsc.jpg" alt="GDSC Image 1" class="active">
+        <img src="/images/GDSC/gdsc1.jpg" alt="GDSC Image 2">
+    </div>
+    
+    <div class="gdsc-info">
+        <h1>Google Developer Student Club (GDSC)</h1>
+
+        <p class="section-heading">What is GDSC? 🤔</p>
+        <p>
+            Student-led program supported by Google.<br>
+            Platform to learn and collaborate on web/mobile development, machine learning, and more.<br>
+            Fosters skill-building, networking, and access to Google's resources.
+        </p>
+    
+        <p class="section-heading">Concept of GDSC</p>
+        <p>
+            Explore diverse tech fields focusing on skill development and networking.<br>
+            Ideal for tech enthusiasts and aspiring developers.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Tailored for tech-savvy university students seeking to improve coding skills, collaborate on projects, and gain real-world tech experience.
+        </p>
+    
+        <p class="section-heading">Why GDSC?</p>
+        <p>
+            Focus on practical tech skill development through real-world projects.<br>
+            Networking for professional growth.
+        </p>
+    
+        <p class="section-heading">Other Concepts</p>
+        <p>
+            Community and student leadership fostering collaboration on tech events.<br>
+            A hub for growth, learning, and connections.
+        </p>
+    
+        <p class="section-heading">Technologies We Are Interested In:</p>
+        <p>
+            <strong>Android Development:</strong> Stay updated with the latest trends in modern Android development.<br>
+            <strong>Web Development:</strong> Learn the core foundations and trends in creating a delightful web experience.<br>
+            <strong>Cloud Computing:</strong> Stay relevant in a cloud-first world with agility and innovation.<br>
+            <strong>Machine Learning:</strong> Drive user engagement with intelligent apps that improve from experience.<br>
+            <strong>Cyber Security:</strong> Learn to protect applications in the digital world.<br>
+            <strong>Competitive Programming:</strong> Enhance problem-solving skills and logic in a competitive environment.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/panclubs/gdsc/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.gdsc-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.gdsc-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.gdsc-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.gdsc-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+
+<style>
+    .gdsc-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 50px;
+}
+
+.gdsc-image img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.gdsc-info {
+    color: white; /* Set the text color to white */
+}
+
+.gdsc-info h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.gdsc-info p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+@media (min-width: 768px) {
+    .gdsc-info p {
+        font-size: 22px;
+
+    }
+}
+
+
+
+.gdsc-image img {
+    display: none;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.gdsc-image img.active {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gdsc-info h1 {
+    font-size: 36px; /* Adjust this value as needed */
+    margin-bottom: 20px;
+}
+
+.gdsc-info p {
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.gdsc-info .section-heading {
+    font-size: 50px; /* Increase the size for section headings */
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+
+.apply-now {
+    margin-top: 40px;
+}
+
+.btn-apply {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff; /* Blue background color */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-apply:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+</style>

@@ -1,0 +1,58 @@
+<%- layout('layouts/boilerplate') %>
+
+<!-- Animated Introduction -->
+<div class="intro-text">
+    <h1>Welcome to the Club!</h1>
+    <p>Discover the exciting world of clubs at DYPCOE. Choose your path below:</p>
+</div>
+
+<div class="panclub-circles-container">
+    <div class="panclub-item">
+        <a href="/collegeclub/panclubs" class="panclub-circle-link">
+            <div class="panclub-circle">
+                <img src="/images/panclubs.jpg" alt="PANCLUBS">
+            </div>
+            <p class="panclub-title">PAN CLUBS</p>
+        </a>
+    </div>
+
+    <div class="panclub-item">
+        <a href="/collegeclub/depatmentclubs" class="panclub-circle-link">
+            <div class="panclub-circle">
+                <img src="/images/departmentclubs.jpg" alt="DEPARTMENT CLUBS">
+            </div>
+            <p class="panclub-title">DEPARTMENT CLUBS</p>
+        </a>
+    </div>
+</div>
+
+<style>
+    .intro-text {
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        margin: 30px 0;
+        opacity: 0;
+        animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    .intro-text h1 {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+
+    .intro-text p {
+        font-size: 24px;
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

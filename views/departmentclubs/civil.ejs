@@ -1,0 +1,58 @@
+<%- layout('layouts/boilerplate') %>
+
+<!-- Animated Introduction -->
+<div class="intro-text">
+    <h1>Hi! Welcome to the Civil Engineering Department</h1>
+    <p>Explore the various clubs and initiatives!</p>
+</div>
+
+<div class="panclub-circles-container">
+    <div class="panclub-item">
+        <a href="/collegeclub/departmentclubs/civil/cesa" class="panclub-circle-link">
+            <div class="panclub-circle">
+                <img src="/images/civil/cesa.jpg" alt="CESA">
+            </div>
+            <p class="panclub-title">CESA</p>
+        </a>
+    </div>
+
+    <div class="panclub-item">
+        <a href="/collegeclub/departmentclubs/civil/igs" class="panclub-circle-link">
+            <div class="panclub-circle">
+                <img src="/images/civil/igs.jpg" alt="IGS">
+            </div>
+            <p class="panclub-title">IGS</p>
+        </a>
+    </div>
+</div>
+
+<style>
+    .intro-text {
+        color: white;
+        text-align: center;
+        font-size: 28px;
+        margin: 30px 0;
+        opacity: 0;
+        animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    .intro-text h1 {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+
+    .intro-text p {
+        font-size: 24px;
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

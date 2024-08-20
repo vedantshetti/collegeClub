@@ -1,0 +1,196 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="toastmaster-container">
+    <div class="toastmaster-image">
+        <img src="/images/toastmaster.jpg" alt="Toastmaster Image 1" class="active">
+    </div>
+    
+    <div class="toastmaster-info">
+        <h1>Toastmaster Club</h1>
+
+        <p class="section-heading">What is Toastmaster? 🤔</p>
+        <p>
+            The Toastmaster Club is dedicated to developing soft skills, focusing on public speaking, communication, and leadership.<br>
+            We provide a supportive environment for members to improve their speaking abilities, enhance their confidence, and prepare for interviews.<br>
+            Join us to gain invaluable experience and skills that will help you excel in both professional and personal settings.
+        </p>
+    
+        <p class="section-heading">Our Mission</p>
+        <p>
+            To empower individuals with the skills needed to become effective communicators and leaders.<br>
+            We aim to create a platform where members can practice, learn, and grow through structured programs and regular speaking opportunities.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Ideal for anyone looking to improve their public speaking skills, enhance their professional presence, and build confidence for interviews and presentations.
+        </p>
+    
+        <p class="section-heading">Why Join Toastmaster?</p>
+        <p>
+            Access to structured speaking and leadership programs.<br>
+            Opportunities to practice public speaking in a supportive environment.<br>
+            Receive constructive feedback from experienced members and mentors.
+        </p>
+    
+        <p class="section-heading">Core Activities</p>
+        <p>
+            Regular meetings with prepared speeches, impromptu speaking exercises, and feedback sessions.<br>
+            Workshops on communication, presentation skills, and leadership.<br>
+            Opportunities to participate in speech contests and events.
+        </p>
+    
+        <p class="section-heading">Key Benefits:</p>
+        <p>
+            <strong>Confidence Building:</strong> Gain confidence in speaking and presenting.<br>
+            <strong>Professional Development:</strong> Enhance your resume and interview skills.<br>
+            <strong>Networking:</strong> Connect with professionals and peers who share your interests.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/panclubs/toastmaster/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.toastmaster-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.toastmaster-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.toastmaster-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.toastmaster-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .toastmaster-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .toastmaster-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .toastmaster-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .toastmaster-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .toastmaster-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .toastmaster-info p {
+            font-size: 22px;
+        }
+    }
+
+    .toastmaster-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .toastmaster-image img.active {
+        display: block;
+    }
+
+    .toastmaster-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .toastmaster-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .toastmaster-info .section-heading {
+        font-size: 50px;
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+</style>

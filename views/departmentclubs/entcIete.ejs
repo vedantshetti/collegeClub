@@ -1,0 +1,198 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="iete-container">
+    <div class="iete-image">
+        <img src="/images/entc/iete.jpg" alt="IETE Image 1" class="active">
+    </div>
+    
+    <div class="iete-info">
+        <h1>Institute of Electronics and Telecommunication Engineers (IETE)</h1>
+
+        <p class="section-heading">What is IETE? 🤔</p>
+        <p>
+            IETE is the Institute of Electronics and Telecommunication Engineers.<br>
+            A prestigious club under the ENTC department focused on practical electronics knowledge.<br>
+            It provides hands-on experience and deepens understanding of electronics and telecommunication concepts.
+        </p>
+    
+        <p class="section-heading">Concept of IETE</p>
+        <p>
+            IETE aims to enhance the technical knowledge and practical skills of students in the field of electronics and telecommunication.<br>
+            Encourages students to engage in innovative projects and workshops.
+        </p>
+    
+        <p class="section-heading">Target Audience</p>
+        <p>
+            Ideal for ENTC students who are passionate about electronics and want to gain practical experience.<br>
+            Suitable for those looking to build a strong foundation in electronics and telecommunication engineering.
+        </p>
+    
+        <p class="section-heading">Why IETE?</p>
+        <p>
+            Offers a platform to explore the practical aspects of electronics and telecommunication.<br>
+            Provides opportunities for hands-on learning through projects, workshops, and industry interactions.<br>
+            Focuses on bridging the gap between theoretical knowledge and practical application.
+        </p>
+    
+        <p class="section-heading">Other Concepts</p>
+        <p>
+            A hub for innovation and experimentation in electronics.<br>
+            Supports continuous learning and professional growth through various technical activities.
+        </p>
+    
+        <p class="section-heading">Key Areas of Focus:</p>
+        <p>
+            <strong>Practical Electronics:</strong> Workshops and projects to build hands-on skills in electronics.<br>
+            <strong>Telecommunication:</strong> Deepening understanding of telecommunication technologies.<br>
+            <strong>Innovation:</strong> Encourages creative thinking and innovative solutions in electronics.<br>
+            <strong>Industry Interaction:</strong> Opportunities to interact with industry experts and gain real-world insights.<br>
+            <strong>Technical Development:</strong> Seminars and events focused on the latest trends in electronics and telecommunication.
+        </p>
+
+        <!-- Apply Now Button -->
+        <div class="apply-now">
+            <a href="/collegeclub/departmentclubs/entc/iete/apply" class="btn-apply">Apply Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.iete-image img');
+        const totalImages = images.length;
+
+        // Function to show the current image
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // Function to handle swipe and click
+        function changeImage(direction) {
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+            } else if (direction === 'previous') {
+                currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Swipe detection
+        let startX = 0;
+        document.querySelector('.iete-image').addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.iete-image').addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                changeImage('next');
+            } else if (startX < endX - 50) {
+                changeImage('previous');
+            }
+        });
+
+        // Click detection to cycle images
+        document.querySelector('.iete-image').addEventListener('click', function() {
+            changeImage('next');
+        });
+    });
+</script>
+
+<style>
+    .iete-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .iete-image img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .iete-info {
+        color: white; /* Set the text color to white */
+    }
+
+    .iete-info h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .iete-info p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .iete-info p {
+            font-size: 22px;
+        }
+    }
+
+    .iete-image img {
+        display: none;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .iete-image img.active {
+        display: block;
+    }
+
+    .iete-info h1 {
+        font-size: 36px; /* Adjust this value as needed */
+        margin-bottom: 20px;
+    }
+
+    .iete-info p {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .iete-info .section-heading {
+        font-size: 50px; /* Increase the size for section headings */
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .apply-now {
+        margin-top: 40px;
+    }
+
+    .btn-apply {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; /* Blue background color */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-apply:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly increase size on hover */
+    }
+</style>
