@@ -69,7 +69,13 @@
 
 
 
-
+    function isLoggedIn(req, res, next) {
+        if (req.isAuthenticated()) {
+            return next(); // Proceed if the user is authenticated
+        }
+        req.flash('error', 'You must be signed in first!');
+        res.redirect('/collegeclub/login'); // Redirect to the login page if not authenticated
+    }
 
 
     // Set up EJS and Views Directory
@@ -202,55 +208,57 @@ app.get("/collegeclub", (req, res) => {
     res.render("index", { title: "College Club Home" });
 });
 
-app.get('/collegeclub/panclubs', (req, res) => {
+
+
+app.get('/collegeclub/panclubs',isLoggedIn,  (req, res) => {
     res.render('panclubs', { title: "PanClubs" });
 });
 
-app.get('/collegeclub/depatmentclubs', (req, res) => {
+app.get('/collegeclub/depatmentclubs',isLoggedIn,  (req, res) => {
     res.render('depatmentclubs', { title: "depatmentclubs" });
 });
 
 
 // departmentclubs...........................................................................
 
-app.get('/collegeclub/depatmentclubs/computer', (req, res) => {
+app.get('/collegeclub/depatmentclubs/computer',isLoggedIn,  (req, res) => {
     res.render('departmentclubs/computer', { title: "CSE" });
 });
 
 
 
 // Civil Engineering Club route
-app.get('/collegeclub/departmentclubs/civil', (req, res) => {
+app.get('/collegeclub/departmentclubs/civil',isLoggedIn,  (req, res) => {
     res.render('departmentclubs/civil', { title: "Civil Engineering" });
 });
 
 // Mechanical Engineering Club route
-app.get('/collegeclub/departmentclubs/mechanical', (req, res) => {
+app.get('/collegeclub/departmentclubs/mechanical', isLoggedIn, (req, res) => {
     res.render('departmentclubs/mechanical', { title: "Mechanical Engineering" });
 });
 
 // Electronics and Telecommunication (ENTC) Club route
-app.get('/collegeclub/departmentclubs/entc', (req, res) => {
+app.get('/collegeclub/departmentclubs/entc', isLoggedIn, (req, res) => {
     res.render('departmentclubs/entc', { title: "ENTC" });
 });
 
 // Information Technology (IT) Club route
-app.get('/collegeclub/departmentclubs/it', (req, res) => {
+app.get('/collegeclub/departmentclubs/it',isLoggedIn,  (req, res) => {
     res.render('departmentclubs/it', { title: "Information Technology" });
 });
 
 // Artificial Intelligence and Data Science (AIDS) Club route
-app.get('/collegeclub/departmentclubs/aids', (req, res) => {
+app.get('/collegeclub/departmentclubs/aids',isLoggedIn,  (req, res) => {
     res.render('departmentclubs/aids', { title: "AIDS" });
 });
 
 // Instrumentation Engineering Club route
-app.get('/collegeclub/depatmentclubs/instrumentation', (req, res) => {
+app.get('/collegeclub/depatmentclubs/instrumentation',isLoggedIn,  (req, res) => {
     res.render('departmentclubs/instrumentation', { title: "Instrumentation Engineering" });
 });
 
 // robotics route
-app.get('/collegeclub/depatmentclubs/robotics', (req, res) => {
+app.get('/collegeclub/depatmentclubs/robotics',isLoggedIn,  (req, res) => {
     res.render('departmentclubs/robotics', { title: "robotics Engineering" });
 });
 
@@ -259,15 +267,15 @@ app.get('/collegeclub/depatmentclubs/robotics', (req, res) => {
 
 
 // ............................  .computer department clubs ................. start 
-app.get('/collegeclub/depatmentclubs/computer/aces', (req, res) => {
+app.get('/collegeclub/depatmentclubs/computer/aces',isLoggedIn,  (req, res) => {
     res.render('departmentclubs/computerAces', { title: "ACES" });
 });
 
-app.get('/collegeclub/depatmentclubs/computer/aces/apply', (req, res) => {
+app.get('/collegeclub/depatmentclubs/computer/aces/apply',isLoggedIn,  (req, res) => {
     res.render('forms/aces', { title: "ACSE" });
 });
 
-app.post('/collegeclub/depatmentclubs/computer/aces/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/depatmentclubs/computer/aces/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, role, year, projectLink } = req.body;
         let resumePath = '';
@@ -302,17 +310,17 @@ app.post('/collegeclub/depatmentclubs/computer/aces/apply', upload.single('resum
 
 
 
-app.get('/collegeclub/depatmentclubs/computer/acm', (req, res) => {
+app.get('/collegeclub/depatmentclubs/computer/acm', isLoggedIn, (req, res) => {
     res.render('departmentclubs/computerAcm', { title: "ACM" });
 });
 
 
-app.get('/collegeclub/depatmentclubs/computer/acm/apply', (req, res) => {
+app.get('/collegeclub/depatmentclubs/computer/acm/apply', isLoggedIn, (req, res) => {
     res.render('forms/acm', { title: "ACM" });
 });
 
 
-app.post('/collegeclub/depatmentclubs/computer/acm/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/depatmentclubs/computer/acm/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
     try {
         // Extract form data
         const { fullName, email, phone, role, year, projectLink } = req.body;
@@ -350,16 +358,16 @@ app.post('/collegeclub/depatmentclubs/computer/acm/apply', upload.single('resume
 
 // ................................Aids department clubs  ...........start 
 
-app.get('/collegeclub/depatmentclubs/aids/s4ds', (req, res) => {
+app.get('/collegeclub/depatmentclubs/aids/s4ds', isLoggedIn, (req, res) => {
     res.render('departmentclubs/aidsS4ds', { title: "S4DS" });
 });
 
-app.get('/collegeclub/depatmentclubs/aids/s4ds/apply', (req, res) => {
+app.get('/collegeclub/depatmentclubs/aids/s4ds/apply', isLoggedIn, (req, res) => {
     res.render('forms/s4ds', { title: "S4DS" });
 });
 
 
-app.post('/collegeclub/depatmentclubs/aids/s4ds/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/depatmentclubs/aids/s4ds/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         // Extract form data
         const { fullName, email, phone, role, year, projectLink } = req.body;
@@ -390,15 +398,15 @@ app.post('/collegeclub/depatmentclubs/aids/s4ds/apply', upload.single('resume'),
 
 
 
-app.get('/collegeclub/depatmentclubs/aids/isa', (req, res) => {
+app.get('/collegeclub/depatmentclubs/aids/isa',isLoggedIn,  (req, res) => {
     res.render('departmentclubs/aidsIsa', { title: "ISA" });
 });
 
-app.get('/collegeclub/depatmentclubs/aids/isa/apply', (req, res) => {
+app.get('/collegeclub/depatmentclubs/aids/isa/apply', isLoggedIn, (req, res) => {
     res.render('forms/isa', { title: "ISA" });
 });
 
-app.post('/collegeclub/depatmentclubs/aids/isa/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/depatmentclubs/aids/isa/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
     try {
         // Extract form data
         const { fullName, email, phone, role, year, projectLink } = req.body;
@@ -433,16 +441,16 @@ app.post('/collegeclub/depatmentclubs/aids/isa/apply', upload.single('resume'), 
 
 //............................................................Entc department clubs...........start
 
-app.get('/collegeclub/departmentclubs/entc/enticers', (req, res) => {
+app.get('/collegeclub/departmentclubs/entc/enticers', isLoggedIn, (req, res) => {
     res.render('departmentclubs/entcEnticers', { title: "ENTICERS" });
 });
 
-app.get('/collegeclub/departmentclubs/entc/enticers/apply', (req, res) => {
+app.get('/collegeclub/departmentclubs/entc/enticers/apply', isLoggedIn, (req, res) => {
     res.render('forms/enticers', { title: "ENTICERS" });
 });
 
 
-app.post('/collegeclub/departmentclubs/entc/enticers/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/departmentclubs/entc/enticers/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const newApplication = new Enticers({
             fullName: req.body.fullName,
@@ -470,15 +478,15 @@ app.post('/collegeclub/departmentclubs/entc/enticers/apply', upload.single('resu
 
 
 
-app.get('/collegeclub/departmentclubs/entc/iete', (req, res) => {
+app.get('/collegeclub/departmentclubs/entc/iete', isLoggedIn, (req, res) => {
     res.render('departmentclubs/entcIete', { title: "IETE" });
 });
 
-app.get('/collegeclub/departmentclubs/entc/iete/apply', (req, res) => {
+app.get('/collegeclub/departmentclubs/entc/iete/apply', isLoggedIn, (req, res) => {
     res.render('forms/iete', { title: "IETE" });
 });
 
-app.post('/collegeclub/departmentclubs/entc/iete/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/departmentclubs/entc/iete/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
         const resume = req.file ? req.file.filename : null;
@@ -513,16 +521,16 @@ app.post('/collegeclub/departmentclubs/entc/iete/apply', upload.single('resume')
 
 //..........................................IT department clubs.........................................start
 
-app.get('/collegeclub/departmentclubs/it/itesa', (req, res) => {
+app.get('/collegeclub/departmentclubs/it/itesa', isLoggedIn, (req, res) => {
     res.render('departmentclubs/itItesa', { title: "ITESA" });
 });
 
-app.get('/collegeclub/departmentclubs/it/itesa/apply', (req, res) => {
+app.get('/collegeclub/departmentclubs/it/itesa/apply',isLoggedIn,  (req, res) => {
     res.render('forms/itesa', { title: "ITESA" });
 });
 
 
-app.post('/collegeclub/departmentclubs/it/itesa/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/departmentclubs/it/itesa/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
     try {
         const { fullName, email, phone, role, year, projectLink } = req.body;
         const resume = req.file ? req.file.filename : null;
@@ -556,15 +564,15 @@ app.post('/collegeclub/departmentclubs/it/itesa/apply', upload.single('resume'),
 //.........................................Mechanical department clubs ........start
 
 
-app.get('/collegeclub/departmentclubs/mechanical/mesa', (req, res) => {
+app.get('/collegeclub/departmentclubs/mechanical/mesa', isLoggedIn, (req, res) => {
     res.render('departmentclubs/mechanicalMesa', { title: "MESA" });
 });
 
-app.get('/collegeclub/departmentclubs/mechanical/mesa/apply', (req, res) => {
+app.get('/collegeclub/departmentclubs/mechanical/mesa/apply',isLoggedIn,  (req, res) => {
     res.render('forms/mesa', { title: "MESA" });
 });
 
-app.post('/collegeclub/departmentclubs/mechanical/mesa/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/departmentclubs/mechanical/mesa/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
     try {
         const { fullName, email, phone, role, year, projectLink } = req.body;
         const resume = req.file ? req.file.filename : null;
@@ -592,16 +600,16 @@ app.post('/collegeclub/departmentclubs/mechanical/mesa/apply', upload.single('re
 
 
 
-app.get('/collegeclub/departmentclubs/mechanical/prediators', (req, res) => {
+app.get('/collegeclub/departmentclubs/mechanical/prediators', isLoggedIn, (req, res) => {
     res.render('departmentclubs/mechanicalPrediators', { title: "PREDIATORS" });
 });
 
-app.get('/collegeclub/departmentclubs/mechanical/prediators/apply', (req, res) => {
+app.get('/collegeclub/departmentclubs/mechanical/prediators/apply',isLoggedIn,  (req, res) => {
     res.render('forms/prediators', { title: "PREDIATORS" });
 });
 
 
-app.post('/collegeclub/departmentclubs/mechanical/prediators/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/departmentclubs/mechanical/prediators/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
         const resume = req.file ? req.file.filename : null;
@@ -634,15 +642,15 @@ app.post('/collegeclub/departmentclubs/mechanical/prediators/apply', upload.sing
 
 // ......................................................Civil department clubs.....start
 
-app.get('/collegeclub/departmentclubs/civil/cesa', (req, res) => {
+app.get('/collegeclub/departmentclubs/civil/cesa', isLoggedIn, (req, res) => {
     res.render('departmentclubs/civilCesa', { title: "CESA" });
 });
 
-app.get('/collegeclub/departmentclubs/civil/cesa/apply', (req, res) => {
+app.get('/collegeclub/departmentclubs/civil/cesa/apply', isLoggedIn, (req, res) => {
     res.render('forms/cesa', { title: "CESA" });
 });
 
-app.post('/collegeclub/departmentclubs/civil/cesa/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/departmentclubs/civil/cesa/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
         const resume = req.file ? req.file.filename : null;
@@ -672,15 +680,15 @@ app.post('/collegeclub/departmentclubs/civil/cesa/apply', upload.single('resume'
 
 
 
-app.get('/collegeclub/departmentclubs/civil/igs', (req, res) => {
+app.get('/collegeclub/departmentclubs/civil/igs', isLoggedIn, (req, res) => {
     res.render('departmentclubs/civilIgs', { title: "IGS" });
 });
 
-app.get('/collegeclub/departmentclubs/civil/igs/apply', (req, res) => {
+app.get('/collegeclub/departmentclubs/civil/igs/apply',isLoggedIn,  (req, res) => {
     res.render('forms/igs', { title: "IGS" });
 });
 
-app.post('/collegeclub/departmentclubs/civil/igs/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/departmentclubs/civil/igs/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
     try {
         const { fullName, email, phone, role, year, projectLink } = req.body;
         const resume = req.file ? req.file.filename : '';
@@ -719,15 +727,15 @@ app.post('/collegeclub/departmentclubs/civil/igs/apply', upload.single('resume')
 
 //...........................................Instru department clubs............................start
 
-app.get('/collegeclub/depatmentclubs/instrumentation/saie', (req, res) => {
+app.get('/collegeclub/depatmentclubs/instrumentation/saie', isLoggedIn, (req, res) => {
     res.render('departmentclubs/instrumentationSaie', { title: "SAIE" });
 });
 
-app.get('/collegeclub/depatmentclubs/instrumentation/saie/apply', (req, res) => {
+app.get('/collegeclub/depatmentclubs/instrumentation/saie/apply',isLoggedIn,  (req, res) => {
     res.render('forms/saie', { title: "SAIE" });
 });
 
-app.post('/collegeclub/departmentclubs/instrumentation/saie/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/departmentclubs/instrumentation/saie/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
         const resume = req.file.path;
@@ -755,16 +763,16 @@ app.post('/collegeclub/departmentclubs/instrumentation/saie/apply', upload.singl
 
 //...........................................robotics and automation  department clubs..........start
 
-app.get('/collegeclub/departmentclubs/robotics/sara', (req, res) => {
+app.get('/collegeclub/departmentclubs/robotics/sara', isLoggedIn, (req, res) => {
     res.render('departmentclubs/roboticsSara', { title: "SARA" });
 });
 
 
-app.get('/collegeclub/departmentclubs/robotics/sara/apply', (req, res) => {
+app.get('/collegeclub/departmentclubs/robotics/sara/apply',isLoggedIn,  (req, res) => {
     res.render('forms/sara', { title: "SARA" });
 });
 
-app.post('/collegeclub/departmentclubs/robotics/sara/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/departmentclubs/robotics/sara/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, role, year, projectLink } = req.body;
         const resume = req.file ? req.file.filename : null;
@@ -796,16 +804,16 @@ app.post('/collegeclub/departmentclubs/robotics/sara/apply', upload.single('resu
 // panclubs ................................................................
 
 // GDSC route ...........................................           start
-app.get('/collegeclub/panclubs/gdsc', (req, res) => {
+app.get('/collegeclub/panclubs/gdsc', isLoggedIn, (req, res) => {
     res.render('panclubs/gdsc', { title: "GDSC" });
 });
 
 // Route for the "Apply Now" button
-app.get('/collegeclub/panclubs/gdsc/apply', (req, res) => {
+app.get('/collegeclub/panclubs/gdsc/apply', isLoggedIn, (req, res) => {
     res.render('forms/panclubsGdscForm', { title: "Apply for GDSC" });
 });
 
-app.post('/collegeclub/panclubs/gdsc/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/panclubs/gdsc/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
         let resumePath = '';
@@ -842,17 +850,17 @@ app.post('/collegeclub/panclubs/gdsc/apply', upload.single('resume'), async (req
 
 
 // Offbit route............................................................. start
-app.get('/collegeclub/panclubs/offbit', (req, res) => {
+app.get('/collegeclub/panclubs/offbit',isLoggedIn,  (req, res) => {
     res.render('panclubs/offbit', { title: "Offbit" });
 });
 
 // Route for the "Apply Now" button for Offbit
-app.get('/collegeclub/panclubs/offbit/apply', (req, res) => {
+app.get('/collegeclub/panclubs/offbit/apply',isLoggedIn,  (req, res) => {
     res.render('forms/panclubsOffbitForm', { title: "Apply for Offbit" });
 });
 
 
-app.post('/collegeclub/panclubs/offbit/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/panclubs/offbit/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
         let resumePath = '';
@@ -889,17 +897,17 @@ app.post('/collegeclub/panclubs/offbit/apply', upload.single('resume'), async (r
 
 
 //....................................... Vihang route..............start 
-app.get('/collegeclub/panclubs/vihang', (req, res) => {
+app.get('/collegeclub/panclubs/vihang',isLoggedIn,  (req, res) => {
     res.render('panclubs/vihang', { title: "Vihang Kalamandal" });
 });
 
 // Route for the "Apply Now" button for Vihang
-app.get('/collegeclub/panclubs/vihang/apply', (req, res) => {
+app.get('/collegeclub/panclubs/vihang/apply',isLoggedIn,  (req, res) => {
     res.render('forms/panclubsVihangForm', { title: "Apply for Vihang Kalamandal" });
 });
 
 // Vihang Club Application Form Submission
-app.post('/collegeclub/panclubs/vihang/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/panclubs/vihang/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
         let resumePath = '';
@@ -935,17 +943,17 @@ app.post('/collegeclub/panclubs/vihang/apply', upload.single('resume'), async (r
 
 
 // .......................................................CPMC route    start   ...........
-app.get('/collegeclub/panclubs/cpmc', (req, res) => {
+app.get('/collegeclub/panclubs/cpmc',isLoggedIn,  (req, res) => {
     res.render('panclubs/cpmc', { title: "CPMC" });
 });
 
 // Route for the "Apply Now" button for CPMC
-app.get('/collegeclub/panclubs/cpmc/apply', (req, res) => {
+app.get('/collegeclub/panclubs/cpmc/apply',isLoggedIn,  (req, res) => {
     res.render('forms/panclubsCpmcForm', { title: "Apply for CPMC" });
 });
 
 
-app.post('/collegeclub/panclubs/cpmc/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/panclubs/cpmc/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
         let resumePath = '';
@@ -979,17 +987,17 @@ app.post('/collegeclub/panclubs/cpmc/apply', upload.single('resume'), async (req
 
 // .......................................Abhivyakti route...............start
 
-app.get('/collegeclub/panclubs/abhivyakti', (req, res) => {
+app.get('/collegeclub/panclubs/abhivyakti', isLoggedIn, (req, res) => {
     res.render('panclubs/abhivyakti', { title: "Abhivyakti" });
 });
 
 // Route for the "Apply Now" button for Abhivyakti
-app.get('/collegeclub/panclubs/abhivyakti/apply', (req, res) => {
+app.get('/collegeclub/panclubs/abhivyakti/apply',isLoggedIn,  (req, res) => {
     res.render('forms/panclubsAbhivyaktiForm', { title: "Apply for Abhivyakti" });
 });
 
 
-app.post('/collegeclub/panclubs/abhivyakti/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/panclubs/abhivyakti/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
         let resumePath = '';
@@ -1023,16 +1031,16 @@ app.post('/collegeclub/panclubs/abhivyakti/apply', upload.single('resume'), asyn
 
 
 // ..................................................NSS route...............START
-app.get('/collegeclub/panclubs/nss', (req, res) => {
+app.get('/collegeclub/panclubs/nss', isLoggedIn, (req, res) => {
     res.render('panclubs/nss', { title: "NSS" });
 });
 
 // Route for the "Apply Now" button for NSS
-app.get('/collegeclub/panclubs/nss/apply', (req, res) => {
+app.get('/collegeclub/panclubs/nss/apply', isLoggedIn, (req, res) => {
     res.render('forms/panclubsNssForm', { title: "Apply for NSS" });
 });
 
-app.post('/collegeclub/panclubs/nss/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/panclubs/nss/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
         let resumePath = '';
@@ -1066,19 +1074,19 @@ app.post('/collegeclub/panclubs/nss/apply', upload.single('resume'), async (req,
 
 
 //......................................... Toastmasters route..................start
-app.get('/collegeclub/panclubs/toastmaster', (req, res) => {
+app.get('/collegeclub/panclubs/toastmaster',isLoggedIn,  (req, res) => {
     res.render('panclubs/toastmaster', { title: "Toastmasters" });
 });
 
 // Route for the "Apply Now" button for Toastmasters
-app.get('/collegeclub/panclubs/toastmaster/apply', (req, res) => {
+app.get('/collegeclub/panclubs/toastmaster/apply',isLoggedIn,  (req, res) => {
     res.render('forms/panclubsToastmasterForm', { title: "Apply for Toastmasters" });
 });
 
 
 
 
-app.post('/collegeclub/panclubs/toastmaster/apply', upload.single('resume'), async (req, res) => {
+app.post('/collegeclub/panclubs/toastmaster/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
         let resumePath = '';
@@ -1131,16 +1139,21 @@ app.get('/auth/google/callback', passport.authenticate('google', {
     req.flash('success', 'Welcome back!');
     res.redirect('/');
 });
-
 // Catch-all Route for 404 Errors
 app.all("*", (req, res, next) => {
-    next(new ExpressError("Page Not Found", 404));
+    next(new ExpressError("Page Not Found", 404)); // Pass the error to the error handler
 });
 
 // Error Handling Middleware
+// Error Handling Middleware
 app.use((err, req, res, next) => {
-    res.status(err.status || 500);
-    res.render("error", { message: err.message });
+    const { status = 500 } = err; // Default to 500 if status is not set
+    res.status(status); // Set the status code
+    res.render("error", { 
+        title: "Error", // Pass a title for the error page
+        status, // Pass the status code to the template
+        message: err.message // Pass the error message to the template
+    });
 });
 
 // Start the Server
