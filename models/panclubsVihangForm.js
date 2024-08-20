@@ -21,10 +21,6 @@ const panclubsVihangFormSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    year: {
-        type: String,
-        required: true
-    },
     projectLink: {
         type: String,
         required: true
@@ -33,6 +29,8 @@ const panclubsVihangFormSchema = new mongoose.Schema({
         type: String,
         required: true
     }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('PanclubsVihangForm', panclubsVihangFormSchema);
