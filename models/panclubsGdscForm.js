@@ -26,8 +26,7 @@ const panclubsGdscFormSchema = new mongoose.Schema({
         required: true
     },
     projectLink: {
-        type: String,
-        required: true
+        type: String
     },
     resume: {
         type: String // This will store the path to the uploaded file

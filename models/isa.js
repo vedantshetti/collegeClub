@@ -8,8 +8,8 @@ const isaSchema = new Schema({
     department: { type: String, default: 'Artificial Intelligence and Data Science' },
     role: { type: String, required: true },
     year: { type: Number, required: true },
-    projectLink: { type: String, required: true },
-    resume: { type: String, required: true },
+    projectLink: { type: String},
+    resume: { type: String },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Isa', isaSchema);

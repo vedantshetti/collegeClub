@@ -23,12 +23,10 @@ const PanclubsNssFormSchema = new Schema({
         required: true
     },
     projectLink: {
-        type: String,
-        required: true
+        type: String
     },
     resume: {
-        type: String,
-        required: true
+        type: String
     }
 }, {
     timestamps: true
