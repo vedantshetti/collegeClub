@@ -300,7 +300,9 @@ try {
     res.render('thankyou/thankyouAces', { title: "Thank You!" }); // Render the Thank You page
 } catch (error) {
     console.error(error);
-    res.status(500).send('An error occurred while processing your application.');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
@@ -345,7 +347,9 @@ try {
     res.render('thankyou/thankyouAcm', { title: 'Thank You!' });
 } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
@@ -392,7 +396,9 @@ try {
     res.render('thankyou/thankyouS4ds', { title: 'Thank You!' });
 } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
@@ -431,7 +437,9 @@ try {
     res.render('thankyou/thankyouIsa', { title: 'Thank You!' });
 } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
@@ -467,7 +475,9 @@ try {
     res.render('thankyou/thankyouEnticers', { title: 'Thank You' });
 } catch (error) {
     console.error(error);
-    res.status(500).send('Something went wrong.');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
@@ -507,7 +517,9 @@ try {
     res.render('thankyou/thankyouIete', { title: 'Thank You for Applying to IETE Club!' });
 } catch (error) {
     console.error('Error while submitting IETE application:', error);
-    res.status(500).send('An error occurred while submitting your application. Please try again later.');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
@@ -551,7 +563,9 @@ try {
     res.render('thankyou/thankyouItesa', { title: 'Thank You for Applying to ITESA Club!' });
 } catch (error) {
     console.error('Error while submitting ITESA application:', error);
-    res.status(500).send('An error occurred while submitting your application. Please try again later.');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
@@ -593,7 +607,9 @@ try {
     res.render('thankyou/thankyouMesa', { title: 'Thank You for Applying to MESA Club!' });
 } catch (error) {
     console.error('Error while submitting MESA application:', error);
-    res.status(500).send('An error occurred while submitting your application. Please try again later.');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
@@ -630,7 +646,9 @@ try {
     res.render('thankyou/thankyouPrediators', { title: 'Thank You for Applying to Prediators Club!' });
 } catch (error) {
     console.error('Error while submitting Prediators application:', error);
-    res.status(500).send('An error occurred while submitting your application. Please try again later.');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
@@ -671,7 +689,9 @@ try {
     res.render('thankyou/thankyouCesa', { title: 'Thank You for Applying to CESA Club!' });
 } catch (error) {
     console.error('Error while submitting CESA application:', error);
-    res.status(500).send('An error occurred while submitting your application. Please try again later.');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
@@ -707,7 +727,9 @@ try {
     res.render('thankyou/thankyouIgs', { title: 'Thank You' });
 } catch (error) {
     console.error('Error saving application:', error);
-    res.status(500).send('An error occurred while submitting your application. Please try again later.');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
@@ -727,8 +749,8 @@ try {
 
 //...........................................Instru department clubs............................start
 
-app.get('/collegeclub/depatmentclubs/instrumentation/saie', isLoggedIn, (req, res) => {
-res.render('departmentclubs/instrumentationSaie', { title: "SAIE" });
+app.get('/collegeclub/departmentclubs/instrumentation/saie', isLoggedIn, (req, res) => {
+    res.render('departmentclubs/instrumentationSaie', { title: "SAIE" });
 });
 
 app.get('/collegeclub/depatmentclubs/instrumentation/saie/apply',isLoggedIn,  (req, res) => {
@@ -755,7 +777,9 @@ try {
     res.render('thankyou/thankyouSaie', { title: 'Thank You - SAIE Club' });
 } catch (error) {
     console.error('Error saving SAIE application:', error);
-    res.status(500).send('Internal Server Error');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
@@ -791,334 +815,15 @@ try {
     res.render('thankyou/thankyouSara', { title: 'Thank You - SARA Club' });
 } catch (error) {
     console.error(error);
-    res.status(500).send('Server Error');
+    if (!res.headersSent) { // Ensure response is not already sent
+        res.status(500).send('An error occurred while processing your application.');
+    }
 }
 });
 
 
 
 //...........................................robotics and automation  department clubs..........end
-
-
-
-// panclubs ................................................................
-
-// GDSC route ...........................................           start
-app.get('/collegeclub/panclubs/gdsc', isLoggedIn, (req, res) => {
-res.render('panclubs/gdsc', { title: "GDSC" });
-});
-
-// Route for the "Apply Now" button
-app.get('/collegeclub/panclubs/gdsc/apply', isLoggedIn, (req, res) => {
-res.render('forms/panclubsGdscForm', { title: "Apply for GDSC" });
-});
-
-app.post('/collegeclub/panclubs/gdsc/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
-try {
-    const { fullName, email, phone, department, role, year, projectLink } = req.body;
-    let resumePath = '';
-
-    if (req.file) {
-        resumePath = req.file.path;
-    }
-
-    const formData = new PanclubsGdscForm({
-        fullName,
-        email,
-        phone,
-        department,
-        role,
-        year,
-        projectLink,
-        resume: resumePath
-    });
-
-    await formData.save();
-
-    res.render('thankyou/thankyouGdsc', { title: "Thank You!" }); // Render the Thank You page
-} catch (error) {
-    console.error(error);
-    res.status(500).send('An error occurred while processing your application.');
-}
-});
-
-
-
-
-// GDSC route ...........................................         end
-
-
-
-// Offbit route............................................................. start
-app.get('/collegeclub/panclubs/offbit',isLoggedIn,  (req, res) => {
-res.render('panclubs/offbit', { title: "Offbit" });
-});
-
-// Route for the "Apply Now" button for Offbit
-app.get('/collegeclub/panclubs/offbit/apply',isLoggedIn,  (req, res) => {
-res.render('forms/panclubsOffbitForm', { title: "Apply for Offbit" });
-});
-
-
-app.post('/collegeclub/panclubs/offbit/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
-try {
-    const { fullName, email, phone, department, role, year, projectLink } = req.body;
-    let resumePath = '';
-
-    if (req.file) {
-        resumePath = req.file.path;
-    }
-
-    const formData = new PanclubsOffbitForm({
-        fullName,
-        email,
-        phone,
-        department,
-        role,
-        year,
-        projectLink,
-        resume: resumePath
-    });
-
-    await formData.save();
-
-    res.render('thankyou/thankyouOffbit', { title: "Thank You!" }); // Render the Thank You page
-} catch (error) {
-    console.error(error);
-    res.status(500).send('An error occurred while processing your application.');
-}
-});
-
-
-// Offbit route............................................................. start
-
-
-
-
-
-//....................................... Vihang route..............start 
-app.get('/collegeclub/panclubs/vihang',isLoggedIn,  (req, res) => {
-res.render('panclubs/vihang', { title: "Vihang Kalamandal" });
-});
-
-// Route for the "Apply Now" button for Vihang
-app.get('/collegeclub/panclubs/vihang/apply',isLoggedIn,  (req, res) => {
-res.render('forms/panclubsVihangForm', { title: "Apply for Vihang Kalamandal" });
-});
-
-// Vihang Club Application Form Submission
-app.post('/collegeclub/panclubs/vihang/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
-try {
-    const { fullName, email, phone, department, role, year, projectLink } = req.body;
-    let resumePath = '';
-
-    if (req.file) {
-        resumePath = req.file.path;
-    }
-
-    const formData = new PanclubsVihangForm({
-        fullName,
-        email,
-        phone,
-        department,
-        role,
-        year,
-        projectLink,
-        resume: resumePath
-    });
-
-    await formData.save();
-
-    res.render('thankyou/thankyouVihang', { title: "Thank You!" }); // Render the Thank You page
-} catch (error) {
-    console.error(error);
-    res.status(500).send('An error occurred while processing your application.');
-}
-});
-
-
-
-
-//....................................... Vihang route..............end
-
-
-// .......................................................CPMC route    start   ...........
-app.get('/collegeclub/panclubs/cpmc',isLoggedIn,  (req, res) => {
-res.render('panclubs/cpmc', { title: "CPMC" });
-});
-
-// Route for the "Apply Now" button for CPMC
-app.get('/collegeclub/panclubs/cpmc/apply',isLoggedIn,  (req, res) => {
-res.render('forms/panclubsCpmcForm', { title: "Apply for CPMC" });
-});
-
-
-app.post('/collegeclub/panclubs/cpmc/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
-try {
-    const { fullName, email, phone, department, role, year, projectLink } = req.body;
-    let resumePath = '';
-
-    if (req.file) {
-        resumePath = req.file.path;
-    }
-
-    const formData = new PanclubsCpmcForm({
-        fullName,
-        email,
-        phone,
-        department,
-        role,
-        year,
-        projectLink,
-        resume: resumePath
-    });
-
-    await formData.save();
-
-    res.render('thankyou/thankyouCpmc', { title: "Thank You!" }); // Render the Thank You page
-} catch (error) {
-    console.error(error);
-    res.status(500).send('An error occurred while processing your application.');
-}
-});
-
-// .......................................................CPMC route    end   ...........
-
-
-// .......................................Abhivyakti route...............start
-
-app.get('/collegeclub/panclubs/abhivyakti', isLoggedIn, (req, res) => {
-res.render('panclubs/abhivyakti', { title: "Abhivyakti" });
-});
-
-// Route for the "Apply Now" button for Abhivyakti
-app.get('/collegeclub/panclubs/abhivyakti/apply',isLoggedIn,  (req, res) => {
-res.render('forms/panclubsAbhivyaktiForm', { title: "Apply for Abhivyakti" });
-});
-
-
-app.post('/collegeclub/panclubs/abhivyakti/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
-try {
-    const { fullName, email, phone, department, role, year, projectLink } = req.body;
-    let resumePath = '';
-
-    if (req.file) {
-        resumePath = req.file.path;
-    }
-
-    const formData = new PanclubsAbhivyaktiForm({
-        fullName,
-        email,
-        phone,
-        department,
-        role,
-        year,
-        projectLink,
-        resume: resumePath
-    });
-
-    await formData.save();
-
-    res.render('thankyou/thankyouAbhivyakti', { title: "Thank You!" }); // Render the Thank You page
-} catch (error) {
-    console.error(error);
-    res.status(500).send('An error occurred while processing your application.');
-}
-});
-
-
-// .......................................Abhivyakti route...............end
-
-
-// ..................................................NSS route...............START
-app.get('/collegeclub/panclubs/nss', isLoggedIn, (req, res) => {
-res.render('panclubs/nss', { title: "NSS" });
-});
-
-// Route for the "Apply Now" button for NSS
-app.get('/collegeclub/panclubs/nss/apply', isLoggedIn, (req, res) => {
-res.render('forms/panclubsNssForm', { title: "Apply for NSS" });
-});
-
-app.post('/collegeclub/panclubs/nss/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
-try {
-    const { fullName, email, phone, department, role, year, projectLink } = req.body;
-    let resumePath = '';
-
-    if (req.file) {
-        resumePath = req.file.path;
-    }
-
-    const formData = new PanclubsNssForm({
-        fullName,
-        email,
-        phone,
-        department,
-        role,
-        year,
-        projectLink,
-        resume: resumePath
-    });
-
-    await formData.save();
-
-    res.render('thankyou/thankyouNss', { title: "Thank You!" }); // Render the Thank You page
-} catch (error) {
-    console.error(error);
-    res.status(500).send('An error occurred while processing your application.');
-}
-});
-
-
-// ..................................................NSS route...............end
-
-
-//......................................... Toastmasters route..................start
-app.get('/collegeclub/panclubs/toastmaster',isLoggedIn,  (req, res) => {
-res.render('panclubs/toastmaster', { title: "Toastmasters" });
-});
-
-// Route for the "Apply Now" button for Toastmasters
-app.get('/collegeclub/panclubs/toastmaster/apply',isLoggedIn,  (req, res) => {
-res.render('forms/panclubsToastmasterForm', { title: "Apply for Toastmasters" });
-});
-
-
-
-
-app.post('/collegeclub/panclubs/toastmaster/apply', upload.single('resume'),isLoggedIn,  async (req, res) => {
-try {
-    const { fullName, email, phone, department, role, year, projectLink } = req.body;
-    let resumePath = '';
-
-    if (req.file) {
-        resumePath = req.file.path;
-    }
-
-    const formData = new PanclubsToastmasterForm({
-        fullName,
-        email,
-        phone,
-        department,
-        role,
-        year,
-        projectLink,
-        resume: resumePath
-    });
-
-    await formData.save();
-
-    res.render('thankyou/thankyouToastmaster', { title: "Thank You!" }); // Render the Thank You page
-} catch (error) {
-    console.error(error);
-    res.status(500).send('An error occurred while processing your application.');
-}
-});
-
-
-
-
-//......................................... Toastmasters route..................end
 
 
 

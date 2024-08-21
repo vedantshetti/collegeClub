@@ -44,7 +44,7 @@ footer {
 /* Background image settings */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: url('/images/background.jpg') no-repeat center center fixed;
+    background: url('') no-repeat center center fixed;
     background-size: cover; /* Cover the entire viewport */
     background-attachment: fixed; /* Fix the background image */
     overflow: auto; /* Allow scrolling if content exceeds viewport height */

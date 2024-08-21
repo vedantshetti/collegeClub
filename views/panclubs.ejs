@@ -1,66 +1,152 @@
 <%- layout('layouts/boilerplate') %>
 
-<div class="panclub-circles-container">
-    <div class="panclub-item">
-        <a href="/collegeclub/panclubs/gdsc" class="panclub-circle-link">
-          <div class="panclub-circle">
+<div class="panclub-cards-container">
+    <div class="panclub-card">
+        <a href="/collegeclub/panclubs/gdsc" class="panclub-card-link">
+          <div class="panclub-card-image">
             <img src="/images/gdsc.jpg" alt="GDSC">
           </div>
-          <p class="panclub-title">GDSC</p>
+          <div class="panclub-card-content">
+            <p class="panclub-title">GDSC</p>
+          </div>
         </a>
     </div>
 
-    <div class="panclub-item">
-        <a href="/collegeclub/panclubs/offbit" class="panclub-circle-link">
-          <div class="panclub-circle">
+    <div class="panclub-card">
+        <a href="/collegeclub/panclubs/offbit" class="panclub-card-link">
+          <div class="panclub-card-image">
             <img src="/images/offbit.jpg" alt="OFFBIT">
           </div>
-          <p class="panclub-title">OFFBIT</p>
+          <div class="panclub-card-content">
+            <p class="panclub-title">OFFBIT</p>
+          </div>
         </a>
     </div>
 
-    <div class="panclub-item">
-        <a href="/collegeclub/panclubs/vihang" class="panclub-circle-link">
-          <div class="panclub-circle">
+    <div class="panclub-card">
+        <a href="/collegeclub/panclubs/vihang" class="panclub-card-link">
+          <div class="panclub-card-image">
             <img src="/images/vihang.jpg" alt="VIHANG">
           </div>
-          <p class="panclub-title">VIHANG</p>
+          <div class="panclub-card-content">
+            <p class="panclub-title">VIHANG</p>
+          </div>
         </a>
     </div>
 
-    <div class="panclub-item">
-        <a href="/collegeclub/panclubs/cpmc" class="panclub-circle-link">
-          <div class="panclub-circle">
+    <div class="panclub-card">
+        <a href="/collegeclub/panclubs/cpmc" class="panclub-card-link">
+          <div class="panclub-card-image">
             <img src="/images/cpmc.jpg" alt="CPMC">
           </div>
-          <p class="panclub-title">CPMC</p>
+          <div class="panclub-card-content">
+            <p class="panclub-title">CPMC</p>
+          </div>
         </a>
     </div>
 
-    <div class="panclub-item">
-        <a href="/collegeclub/panclubs/abhivyakti" class="panclub-circle-link">
-          <div class="panclub-circle">
+    <div class="panclub-card">
+        <a href="/collegeclub/panclubs/abhivyakti" class="panclub-card-link">
+          <div class="panclub-card-image">
             <img src="/images/abhivyakti.jpg" alt="ABHIVYAKTI">
           </div>
-          <p class="panclub-title">ABHIVYAKTI</p>
+          <div class="panclub-card-content">
+            <p class="panclub-title">ABHIVYAKTI</p>
+          </div>
         </a>
     </div>
 
-    <div class="panclub-item">
-        <a href="/collegeclub/panclubs/nss" class="panclub-circle-link">
-          <div class="panclub-circle">
+    <div class="panclub-card">
+        <a href="/collegeclub/panclubs/nss" class="panclub-card-link">
+          <div class="panclub-card-image">
             <img src="/images/nss.jpg" alt="NSS">
           </div>
-          <p class="panclub-title">NSS</p>
+          <div class="panclub-card-content">
+            <p class="panclub-title">NSS</p>
+          </div>
         </a>
     </div>
 
-    <div class="panclub-item">
-        <a href="/collegeclub/panclubs/toastmaster" class="panclub-circle-link">
-          <div class="panclub-circle">
+    <div class="panclub-card">
+        <a href="/collegeclub/panclubs/toastmaster" class="panclub-card-link">
+          <div class="panclub-card-image">
             <img src="/images/toastmaster.jpg" alt="TOASTMASTER">
           </div>
-          <p class="panclub-title">TOASTMASTER</p>
+          <div class="panclub-card-content">
+            <p class="panclub-title">TOASTMASTER</p>
+          </div>
         </a>
     </div>
 </div>
+
+
+
+<style>
+.panclub-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Default gap between cards */
+    justify-content: center;
+    padding: 20px;
+}
+
+.panclub-card {
+    background-color: #333; /* Black card background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Dark shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 250px;
+    text-align: center;
+}
+
+.panclub-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.panclub-card-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.panclub-card-content {
+    padding: 15px;
+}
+
+.panclub-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    color: #f0f0f0; /* Light text color for contrast */
+}
+
+/* Increase card size and gap on larger screens */
+@media (min-width: 1024px) {
+    .panclub-cards-container {
+        gap: 85px; /* Increased gap for large screens */
+    }
+
+    .panclub-card {
+        width: 300px;
+    }
+
+    .panclub-card-image img {
+        height: 180px;
+    }
+
+    .panclub-title {
+        font-size: 20px;
+    }
+}
+
+/* Hover effect only on larger screens */
+@media (min-width: 768px) {
+    .panclub-card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+
+</style>

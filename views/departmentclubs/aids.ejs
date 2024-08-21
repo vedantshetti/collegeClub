@@ -6,22 +6,26 @@
     <p>Explore the amazing world of AI and Data Science with us.</p>
 </div>
 
-<div class="panclub-circles-container">
-    <div class="panclub-item">
-        <a href="/collegeclub/depatmentclubs/aids/s4ds" class="panclub-circle-link">
-            <div class="panclub-circle">
+<div class="panclub-cards-container">
+    <div class="panclub-card">
+        <a href="/collegeclub/depatmentclubs/aids/s4ds" class="panclub-card-link">
+            <div class="panclub-card-image">
                 <img src="/images/aids/s4ds.jpg" alt="S4DS">
             </div>
-            <p class="panclub-title">S4DS</p>
+            <div class="panclub-card-content">
+                <p class="panclub-title">S4DS</p>
+            </div>
         </a>
     </div>
 
-    <div class="panclub-item">
-        <a href="/collegeclub/depatmentclubs/aids/isa" class="panclub-circle-link">
-            <div class="panclub-circle">
+    <div class="panclub-card">
+        <a href="/collegeclub/depatmentclubs/aids/isa" class="panclub-card-link">
+            <div class="panclub-card-image">
                 <img src="/images/aids/isa.jpg" alt="ISA">
             </div>
-            <p class="panclub-title">ISA</p>
+            <div class="panclub-card-content">
+                <p class="panclub-title">ISA</p>
+            </div>
         </a>
     </div>
 </div>
@@ -31,7 +35,7 @@
     .aids-intro {
         text-align: center;
         margin-top: 50px;
-        color: white;
+        color: rgb(17, 17, 17);
         opacity: 0; /* Start hidden */
         animation: fadeInUp 2s ease-out forwards; /* Animation applied */
     }
@@ -58,8 +62,70 @@
         }
     }
 
-    /* Adjustments for Circle Container */
-    .panclub-circles-container {
+    /* Card Container Styling */
+    .panclub-cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
         margin-top: 30px;
+    }
+
+    .panclub-card {
+        background-color: #333;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        width: 250px;
+        text-align: center;
+    }
+
+    .panclub-card-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .panclub-card-image img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .panclub-card-content {
+        padding: 15px;
+    }
+
+    .panclub-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0;
+        color: #f0f0f0;
+    }
+
+    /* Increase card size and gap on larger screens */
+    @media (min-width: 1024px) {
+        .panclub-cards-container {
+            gap: 85px;
+        }
+
+        .panclub-card {
+            width: 300px;
+        }
+
+        .panclub-card-image img {
+            height: 180px;
+        }
+
+        .panclub-title {
+            font-size: 20px;
+        }
+    }
+
+    /* Hover effect only on larger screens */
+    @media (min-width: 768px) {
+        .panclub-card:hover {
+            transform: translateY(-5px);
+        }
     }
 </style>
