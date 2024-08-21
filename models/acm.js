@@ -7,8 +7,10 @@ const acmSchema = new mongoose.Schema({
     department: { type: String, default: 'Computer Science' },
     role: { type: String, required: true },
     year: { type: Number, required: true },
-    projectLink: { type: String },
-    resume: { type: String }
+    projectLink: { type: String,
+        required: true },
+    resume: { type: String,
+        required: true }
 }, { timestamps: true });
 
 const Acm = mongoose.model('Acm', acmSchema);

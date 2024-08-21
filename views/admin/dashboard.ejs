@@ -71,46 +71,46 @@
             <p class="no-data">NO APPLICATIONS YET FOR GDSC !</p>
         <% } %>
 
-        <!-- Panclubs Offbit Forms -->
-        <h2 class="section-title">OFFBIT CLUB INFORMATION</h2>
-        <% if (panclubsOffbitForms.length > 0) { %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Department</th>
-                        <th>Role</th>
-                        <th>Year</th>
-                        <th>Project Link</th>
-                        <th>Resume</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% panclubsOffbitForms.forEach(form => { %>
-                        <tr>
-                            <td><%= form._id %></td>
-                            <td><%= form.fullName || 'N/A' %></td>
-                            <td><%= form.email || 'N/A' %></td>
-                            <td><%= form.phone || 'N/A' %></td>
-                            <td><%= form.department || 'N/A' %></td>
-                            <td><%= form.role || 'N/A' %></td>
-                            <td><%= form.year || 'N/A' %></td>
-                            <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                            <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                            <td><%= form.createdAt.toDateString() || 'N/A' %></td>
-                            <td><%= form.updatedAt.toDateString() || 'N/A' %></td>
-                        </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-        <% } else { %>
-            <p class="no-data">NO APPLICATIONS YET FOR OFFBIT !</p>
-        <% } %>
+       <!-- Panclubs Offbit Forms -->
+<h2 class="section-title">OFFBIT CLUB INFORMATION</h2>
+<% if (panclubsOffbitForms.length > 0) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Department</th>
+                <th>Role</th>
+                <th>Year</th>
+                <th>Project Link</th>
+                <th>Resume</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% panclubsOffbitForms.forEach(form => { %>
+                <tr>
+                    <td><%= form._id %></td>
+                    <td><%= form.fullName || 'N/A' %></td>
+                    <td><%= form.email || 'N/A' %></td>
+                    <td><%= form.phone || 'N/A' %></td>
+                    <td><%= form.department || 'N/A' %></td>
+                    <td><%= form.role || 'N/A' %></td>
+                    <td><%= form.year || 'N/A' %></td>
+                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
+                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
+                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
+                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } else { %>
+    <p class="no-data">NO APPLICATIONS YET FOR OFFBIT!</p>
+<% } %>
 
 
  <!-- Panclubs Vihang Forms -->

@@ -29,10 +29,10 @@ const prediatorsSchema = new Schema({
         required: true
     },
     projectLink: {
-        type: String
+        type: String, required: true
     },
     resume: {
-        type: String
+        type: String, required: true
     }
 }, { timestamps: true });
 

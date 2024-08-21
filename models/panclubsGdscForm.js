@@ -26,10 +26,13 @@ const panclubsGdscFormSchema = new mongoose.Schema({
         required: true
     },
     projectLink: {
-        type: String
+        type: String,
+        required: true
     },
     resume: {
-        type: String // This will store the path to the uploaded file
+        type: String // This will store the path to the uploaded file, 
+        ,
+        required: true
     }
 }, { timestamps: true });
 

@@ -8,8 +8,8 @@ const itesaSchema = new Schema({
     department: { type: String, default: 'Information Technology' },
     role: { type: String, required: true },
     year: { type: Number, required: true },
-    projectLink: { type: String },
-    resume: { type: String },
+    projectLink: { type: String, required: true },
+    resume: { type: String, required: true },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Itesa', itesaSchema);
