@@ -2,6 +2,16 @@
 
 <main class="container">
     <% if (userEmail === 'vedantshetti123456@gmail.com') { %>
+
+        <nav>
+            <ul>
+                <li><a href="/admin/dashboard">Dashboard</a></li>
+                <li><a href="/admin/dashboard/users">Users</a></li> <!-- Link to the users section -->
+                <!-- Add other navigation links here -->
+            </ul>
+        </nav>
+
+        
         <!-- Users List -->
         <h2 class="section-title">Users</h2>
         <% if (users.length > 0) { %>

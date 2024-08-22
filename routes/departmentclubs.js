@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../middleware/upload'); // Adjust path as necessary
-const { isLoggedIn } = require('../middleware/auth'); // Adjust path as necessary
+
+
 const Aces = require('../models/aces'); // Adjust path as necessary
 const Acm = require('../models/acm'); // Adjust path as necessary
 const S4ds = require('../models/s4ds'); // Adjust path as necessary
@@ -16,16 +16,33 @@ const Igs = require('../models/igs'); // Adjust path as necessary
 const Saie = require('../models/saie'); // Adjust path as necessary
 const Sara = require('../models/sara'); // Adjust path as necessary
 
+const multer = require('multer');
+const { storage } = require("../cloudConfig");
+const upload = multer({ storage });
+
+
+// Middleware to Check if User is Logged In
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    req.flash('error', 'You must be signed in first!');
+    res.redirect('/collegeclub/login');
+}
+
+
+
+
 // Computer Department Clubs
-router.get('/collegeclub/departmentclubs/computer/aces', isLoggedIn, (req, res) => {
+router.get('/computer/aces', isLoggedIn, (req, res) => {
     res.render('departmentclubs/computerAces', { title: "ACES" });
 });
 
-router.get('/collegeclub/departmentclubs/computer/aces/apply', isLoggedIn, (req, res) => {
+router.get('/computer/aces/apply', isLoggedIn, (req, res) => {
     res.render('forms/aces', { title: "ACSE" });
 });
 
-router.post('/collegeclub/departmentclubs/computer/aces/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+router.post('/computer/aces/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, role, year, projectLink } = req.body;
         let resumePath = '';
@@ -55,15 +72,15 @@ router.post('/collegeclub/departmentclubs/computer/aces/apply', upload.single('r
     }
 });
 
-router.get('/collegeclub/departmentclubs/computer/acm', isLoggedIn, (req, res) => {
+router.get('/computer/acm', isLoggedIn, (req, res) => {
     res.render('departmentclubs/computerAcm', { title: "ACM" });
 });
 
-router.get('/collegeclub/departmentclubs/computer/acm/apply', isLoggedIn, (req, res) => {
+router.get('/computer/acm/apply', isLoggedIn, (req, res) => {
     res.render('forms/acm', { title: "ACM" });
 });
 
-router.post('/collegeclub/departmentclubs/computer/acm/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+router.post('/computer/acm/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, role, year, projectLink } = req.body;
         const resume = req.file ? req.file.filename : '';
@@ -90,15 +107,15 @@ router.post('/collegeclub/departmentclubs/computer/acm/apply', upload.single('re
 });
 
 // Aids Department Clubs
-router.get('/collegeclub/departmentclubs/aids/s4ds', isLoggedIn, (req, res) => {
+router.get('/aids/s4ds', isLoggedIn, (req, res) => {
     res.render('departmentclubs/aidsS4ds', { title: "S4DS" });
 });
 
-router.get('/collegeclub/departmentclubs/aids/s4ds/apply', isLoggedIn, (req, res) => {
+router.get('/aids/s4ds/apply', isLoggedIn, (req, res) => {
     res.render('forms/s4ds', { title: "S4DS" });
 });
 
-router.post('/collegeclub/departmentclubs/aids/s4ds/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+router.post('/aids/s4ds/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, role, year, projectLink } = req.body;
         const resume = req.file ? req.file.filename : '';
@@ -124,15 +141,15 @@ router.post('/collegeclub/departmentclubs/aids/s4ds/apply', upload.single('resum
     }
 });
 
-router.get('/collegeclub/departmentclubs/aids/isa', isLoggedIn, (req, res) => {
+router.get('/aids/isa', isLoggedIn, (req, res) => {
     res.render('departmentclubs/aidsIsa', { title: "ISA" });
 });
 
-router.get('/collegeclub/departmentclubs/aids/isa/apply', isLoggedIn, (req, res) => {
+router.get('/aids/isa/apply', isLoggedIn, (req, res) => {
     res.render('forms/isa', { title: "ISA" });
 });
 
-router.post('/collegeclub/departmentclubs/aids/isa/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+router.post('/aids/isa/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, role, year, projectLink } = req.body;
         const resume = req.file ? req.file.filename : '';
@@ -159,15 +176,15 @@ router.post('/collegeclub/departmentclubs/aids/isa/apply', upload.single('resume
 });
 
 // Entc Department Clubs
-router.get('/collegeclub/departmentclubs/entc/enticers', isLoggedIn, (req, res) => {
+router.get('/entc/enticers', isLoggedIn, (req, res) => {
     res.render('departmentclubs/entcEnticers', { title: "ENTICERS" });
 });
 
-router.get('/collegeclub/departmentclubs/entc/enticers/apply', isLoggedIn, (req, res) => {
+router.get('/entc/enticers/apply', isLoggedIn, (req, res) => {
     res.render('forms/enticers', { title: "ENTICERS" });
 });
 
-router.post('/collegeclub/departmentclubs/entc/enticers/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+router.post('/entc/enticers/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const newApplication = new Enticers({
             fullName: req.body.fullName,
@@ -190,15 +207,15 @@ router.post('/collegeclub/departmentclubs/entc/enticers/apply', upload.single('r
     }
 });
 
-router.get('/collegeclub/departmentclubs/entc/iete', isLoggedIn, (req, res) => {
+router.get('/entc/iete', isLoggedIn, (req, res) => {
     res.render('departmentclubs/entcIete', { title: "IETE" });
 });
 
-router.get('/collegeclub/departmentclubs/entc/iete/apply', isLoggedIn, (req, res) => {
+router.get('/entc/iete/apply', isLoggedIn, (req, res) => {
     res.render('forms/iete', { title: "IETE" });
 });
 
-router.post('/collegeclub/departmentclubs/entc/iete/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+router.post('/entc/iete/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
         const resume = req.file ? req.file.filename : null;
@@ -225,15 +242,15 @@ router.post('/collegeclub/departmentclubs/entc/iete/apply', upload.single('resum
 });
 
 // IT Department Clubs
-router.get('/collegeclub/departmentclubs/it/itesa', isLoggedIn, (req, res) => {
+router.get('/it/itesa', isLoggedIn, (req, res) => {
     res.render('departmentclubs/itItesa', { title: "ITESA" });
 });
 
-router.get('/collegeclub/departmentclubs/it/itesa/apply', isLoggedIn, (req, res) => {
+router.get('/it/itesa/apply', isLoggedIn, (req, res) => {
         res.render('forms/itesa', { title: "ITESA" });
     });
     
-    router.post('/collegeclub/departmentclubs/it/itesa/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+    router.post('/it/itesa/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
         try {
             const { fullName, email, phone, department, role, year, projectLink } = req.body;
             const resume = req.file ? req.file.filename : null;
@@ -260,15 +277,15 @@ router.get('/collegeclub/departmentclubs/it/itesa/apply', isLoggedIn, (req, res)
     });
     
     // Mechanical Department Clubs
-    router.get('/collegeclub/departmentclubs/mechanical/mesa', isLoggedIn, (req, res) => {
+    router.get('/mechanical/mesa', isLoggedIn, (req, res) => {
         res.render('departmentclubs/mechanicalMesa', { title: "MESA" });
     });
     
-    router.get('/collegeclub/departmentclubs/mechanical/mesa/apply', isLoggedIn, (req, res) => {
+    router.get('/mechanical/mesa/apply', isLoggedIn, (req, res) => {
         res.render('forms/mesa', { title: "MESA" });
     });
     
-    router.post('/collegeclub/departmentclubs/mechanical/mesa/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+    router.post('/mechanical/mesa/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
         try {
             const { fullName, email, phone, department, role, year, projectLink } = req.body;
             const resume = req.file ? req.file.filename : null;
@@ -294,16 +311,16 @@ router.get('/collegeclub/departmentclubs/it/itesa/apply', isLoggedIn, (req, res)
         }
     });
     
-    // Civil Department Clubs
-    router.get('/collegeclub/departmentclubs/civil/prediators', isLoggedIn, (req, res) => {
-        res.render('departmentclubs/civilPrediators', { title: "PREDIATORS" });
+
+    router.get('/mechanical/prediators', isLoggedIn, (req, res) => {
+        res.render('departmentclubs/mechanicalPrediators', { title: "PREDIATORS" });
     });
     
-    router.get('/collegeclub/departmentclubs/civil/prediators/apply', isLoggedIn, (req, res) => {
+    router.get('/mechanical/prediators/apply', isLoggedIn, (req, res) => {
         res.render('forms/prediators', { title: "PREDIATORS" });
     });
     
-    router.post('/collegeclub/departmentclubs/civil/prediators/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+    router.post('/mechanical/prediators/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
         try {
             const { fullName, email, phone, department, role, year, projectLink } = req.body;
             const resume = req.file ? req.file.filename : null;
@@ -329,16 +346,16 @@ router.get('/collegeclub/departmentclubs/it/itesa/apply', isLoggedIn, (req, res)
         }
     });
     
-    // General Clubs
-    router.get('/collegeclub/departmentclubs/general/cesa', isLoggedIn, (req, res) => {
-        res.render('departmentclubs/generalCesa', { title: "CESA" });
+    // civil Clubs
+    router.get('/civil/cesa', isLoggedIn, (req, res) => {
+        res.render('departmentclubs/civilCesa', { title: "CESA" });
     });
     
-    router.get('/collegeclub/departmentclubs/general/cesa/apply', isLoggedIn, (req, res) => {
+    router.get('/civil/cesa/apply', isLoggedIn, (req, res) => {
         res.render('forms/cesa', { title: "CESA" });
     });
     
-    router.post('/collegeclub/departmentclubs/general/cesa/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+    router.post('/civil/cesa/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
         try {
             const { fullName, email, phone, department, role, year, projectLink } = req.body;
             const resume = req.file ? req.file.filename : null;
@@ -364,15 +381,15 @@ router.get('/collegeclub/departmentclubs/it/itesa/apply', isLoggedIn, (req, res)
         }
     });
     
-    router.get('/collegeclub/departmentclubs/general/igs', isLoggedIn, (req, res) => {
-        res.render('departmentclubs/generalIgs', { title: "IGS" });
+    router.get('/civil/igs', isLoggedIn, (req, res) => {
+        res.render('departmentclubs/civilIgs', { title: "IGS" });
     });
     
-    router.get('/collegeclub/departmentclubs/general/igs/apply', isLoggedIn, (req, res) => {
+    router.get('/civil/igs/apply', isLoggedIn, (req, res) => {
         res.render('forms/igs', { title: "IGS" });
     });
     
-    router.post('/collegeclub/departmentclubs/general/igs/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+    router.post('/civil/igs/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
         try {
             const { fullName, email, phone, department, role, year, projectLink } = req.body;
             const resume = req.file ? req.file.filename : null;
@@ -398,15 +415,15 @@ router.get('/collegeclub/departmentclubs/it/itesa/apply', isLoggedIn, (req, res)
         }
     });
     
-    router.get('/collegeclub/departmentclubs/general/saie', isLoggedIn, (req, res) => {
-        res.render('departmentclubs/generalSaie', { title: "SAIE" });
+    router.get('/instrumentation/saie', isLoggedIn, (req, res) => {
+        res.render('departmentclubs/instrumentationSaie', { title: "SAIE" });
     });
     
-    router.get('/collegeclub/departmentclubs/general/saie/apply', isLoggedIn, (req, res) => {
+    router.get('/instrumentation/saie/apply', isLoggedIn, (req, res) => {
         res.render('forms/saie', { title: "SAIE" });
     });
     
-    router.post('/collegeclub/departmentclubs/general/saie/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+    router.post('/instrumentation/saie/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
         try {
             const { fullName, email, phone, department, role, year, projectLink } = req.body;
             const resume = req.file ? req.file.filename : null;
@@ -432,15 +449,15 @@ router.get('/collegeclub/departmentclubs/it/itesa/apply', isLoggedIn, (req, res)
         }
     });
     
-    router.get('/collegeclub/departmentclubs/general/sara', isLoggedIn, (req, res) => {
-        res.render('departmentclubs/generalSara', { title: "SARA" });
+    router.get('/robotics/sara', isLoggedIn, (req, res) => {
+        res.render('departmentclubs/roboticsSara', { title: "SARA" });
     });
     
-    router.get('/collegeclub/departmentclubs/general/sara/apply', isLoggedIn, (req, res) => {
+    router.get('/robotics/sara/apply', isLoggedIn, (req, res) => {
         res.render('forms/sara', { title: "SARA" });
     });
     
-    router.post('/collegeclub/departmentclubs/general/sara/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
+    router.post('/robotics/sara/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
         try {
             const { fullName, email, phone, department, role, year, projectLink } = req.body;
             const resume = req.file ? req.file.filename : null;

@@ -7,16 +7,7 @@
     <title>Login</title>
     
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: url('/images/background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            height: 100vh;
-            overflow: hidden;
-            animation: fadeIn 1s ease-in-out;
-        }
+       
 
         @keyframes fadeIn {
             from {
@@ -144,6 +135,38 @@
         .signup-link a:hover {
             color: #009970;
         }
+
+        
+    /* Existing styles */
+
+    .google-btn {
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    .google-btn a {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: #db4437; /* Google red color */
+        color: #fff;
+        font-size: 16px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .google-btn a:hover {
+        background-color: #c1351d; /* Darker Google red color */
+        transform: scale(1.05);
+    }
+
+    .google-btn a:focus {
+        outline: none;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    }
+
 
         @media (max-width: 600px) {
             .login-form {

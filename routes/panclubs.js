@@ -1,18 +1,35 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../middleware/upload'); // Adjust path as needed
-const isLoggedIn = require('../middleware/isLoggedIn'); // Adjust path as needed
+const multer = require('multer');
+const { storage } = require("../cloudConfig");
+const upload = multer({ storage });
 
-const PanclubsGdscForm = require('./models/PanclubsGdscForm');
-const PanclubsOffbitForm = require('./models/PanclubsOffbitForm');
-const PanclubsVihangForm = require('./models/PanclubsVihangForm');
-const PanclubsCpmcForm = require('./models/PanclubsCpmcForm');
-const PanclubsAbhivyaktiForm = require('./models/PanclubsAbhivyaktiForm');
-const PanclubsNssForm = require('./models/PanclubsNssForm');
-const PanclubsToastmasterForm = require('./models/PanclubsToastmasterForm');
+// Ensure the path to app.js is correct
+
+const PanclubsGdscForm = require('../models/panclubsGdscForm');
+const PanclubsOffbitForm = require('../models/panclubsOffbitForm');
+const PanclubsVihangForm= require('../models/panclubsVihangForm');
+const PanclubsCpmcForm = require('../models/panclubsCpmcForm');
+const PanclubsAbhivyaktiForm = require('../models/panclubsAbhivyaktiForm');
+const PanclubsNssForm = require('../models/panclubsNssForm');
+const PanclubsToastmasterForm = require('../models/panclubsToastmasterForm');
+
+
+
+// Middleware to Check if User is Logged In
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    req.flash('error', 'You must be signed in first!');
+    res.redirect('/collegeclub/login');
+}
+
+
 
 // GDSC route
 router.get('/gdsc', isLoggedIn, (req, res) => {
+    console.log('GDSC route accessed');
     res.render('panclubs/gdsc', { title: "GDSC" });
 });
 
@@ -23,10 +40,7 @@ router.get('/gdsc/apply', isLoggedIn, (req, res) => {
 router.post('/gdsc/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
-        let resumePath = '';
-        if (req.file) {
-            resumePath = req.file.path;
-        }
+        const resumePath = req.file ? req.file.path : '';
         const formData = new PanclubsGdscForm({
             fullName,
             email,
@@ -59,10 +73,7 @@ router.get('/offbit/apply', isLoggedIn, (req, res) => {
 router.post('/offbit/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
-        let resumePath = '';
-        if (req.file) {
-            resumePath = req.file.path;
-        }
+        const resumePath = req.file ? req.file.path : '';
         const formData = new PanclubsOffbitForm({
             fullName,
             email,
@@ -95,10 +106,7 @@ router.get('/vihang/apply', isLoggedIn, (req, res) => {
 router.post('/vihang/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
-        let resumePath = '';
-        if (req.file) {
-            resumePath = req.file.path;
-        }
+        const resumePath = req.file ? req.file.path : '';
         const formData = new PanclubsVihangForm({
             fullName,
             email,
@@ -131,10 +139,7 @@ router.get('/cpmc/apply', isLoggedIn, (req, res) => {
 router.post('/cpmc/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
-        let resumePath = '';
-        if (req.file) {
-            resumePath = req.file.path;
-        }
+        const resumePath = req.file ? req.file.path : '';
         const formData = new PanclubsCpmcForm({
             fullName,
             email,
@@ -167,10 +172,7 @@ router.get('/abhivyakti/apply', isLoggedIn, (req, res) => {
 router.post('/abhivyakti/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
-        let resumePath = '';
-        if (req.file) {
-            resumePath = req.file.path;
-        }
+        const resumePath = req.file ? req.file.path : '';
         const formData = new PanclubsAbhivyaktiForm({
             fullName,
             email,
@@ -203,10 +205,7 @@ router.get('/nss/apply', isLoggedIn, (req, res) => {
 router.post('/nss/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
-        let resumePath = '';
-        if (req.file) {
-            resumePath = req.file.path;
-        }
+        const resumePath = req.file ? req.file.path : '';
         const formData = new PanclubsNssForm({
             fullName,
             email,
@@ -232,7 +231,6 @@ router.get('/toastmaster', isLoggedIn, (req, res) => {
     res.render('panclubs/toastmaster', { title: "Toastmasters" });
 });
 
-
 router.get('/toastmaster/apply', isLoggedIn, (req, res) => {
     res.render('forms/panclubsToastmasterForm', { title: "Apply for Toastmasters" });
 });
@@ -240,12 +238,7 @@ router.get('/toastmaster/apply', isLoggedIn, (req, res) => {
 router.post('/toastmaster/apply', upload.single('resume'), isLoggedIn, async (req, res) => {
     try {
         const { fullName, email, phone, department, role, year, projectLink } = req.body;
-        let resumePath = '';
-
-        if (req.file) {
-            resumePath = req.file.path;
-        }
-
+        const resumePath = req.file ? req.file.path : '';
         const formData = new PanclubsToastmasterForm({
             fullName,
             email,
@@ -258,12 +251,13 @@ router.post('/toastmaster/apply', upload.single('resume'), isLoggedIn, async (re
         });
 
         await formData.save();
-
-        res.render('thankyou/thankyouToastmaster', { title: "Thank You!" }); // Render the Thank You page
+        res.render('thankyou/thankyouToastmaster', { title: "Thank You!" });
     } catch (error) {
         console.error(error);
-        if (!res.headersSent) { // Ensure response is not already sent
+        if (!res.headersSent) {
             res.status(500).send('An error occurred while processing your application.');
         }
     }
 });
+
+module.exports = router;

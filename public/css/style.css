@@ -44,7 +44,7 @@ footer {
 /* Background image settings */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: url('') no-repeat center center fixed;
+    background: url('/images/back.jpg') no-repeat center center fixed;
     background-size: cover; /* Cover the entire viewport */
     background-attachment: fixed; /* Fix the background image */
     overflow: auto; /* Allow scrolling if content exceeds viewport height */
@@ -559,6 +559,17 @@ body {
     }
   }
   
+
+/* Default hover effect */
+
+/* Disable hover effect on small screens */
+@media (max-width: 767px) { /* Adjust the max-width based on your breakpoints */
+    .navbar-brand:hover {
+        text-decoration: none; /* Remove underline or other hover effects */
+        color: inherit; /* Keep the text color unchanged */
+    }
+}
+
 
 
 /* 

@@ -1,26 +1,43 @@
 
 <%- layout('layouts/boilerplate') %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css"> <!-- Your custom styles -->
-   
-    <title>Signup</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: url('/images/background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            height: 100vh;
-            overflow: hidden;
-            animation: fadeIn 1s ease-in-out;
-        }
 
+
+
+    <div class="signup-container" >
+        <div class="signup-form">
+            <h2>Create Account</h2>
+            <form action="/collegeclub/signup" method="POST">
+                <div id="email-group" class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div id="username-group" class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div id="password-group" class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+            
+            <div class="google-btn">
+                <a href="/auth/google" >Sign in with Google</a>
+             </div>
+
+            
+            <div class="login-link">
+                <p>Already have an account? <a href="/collegeclub/login">Log In</a></p>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    <style>
+      
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -83,7 +100,7 @@
         .signup-form h2 {
             margin-bottom: 1.5rem;
             font-size: 2rem;
-            color: #009970;
+            color: darkgreen;
             text-align: center;
         }
 
@@ -109,14 +126,14 @@
         }
 
         .signup-form input:focus {
-            border-color: #009970;
-            box-shadow: 0 0 8px rgba(0, 153, 112, 0.5);
+            border-color: darkgreen;
+            box-shadow: 0 0 8px rgba(0, 22, 16, 0.5);
             outline: none;
         }
 
         .signup-form button {
             width: 100%;
-            background-color: #009970;
+            background-color: darkgreen;
             color: #fff;
             font-size: 16px;
             padding: 0.75rem;
@@ -127,7 +144,7 @@
         }
 
         .signup-form button:hover {
-            background-color: #00b383;
+            background-color: green;
             transform: scale(1.05);
         }
 
@@ -207,39 +224,47 @@
 
 
 
+    /* Existing styles */
+
+    .google-btn {
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    .google-btn a {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: #db4437; /* Google red color */
+        color: #fff;
+        font-size: 16px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .google-btn a:hover {
+        background-color: #c1351d; /* Darker Google red color */
+        transform: scale(1.05);
+    }
+
+    .google-btn a:focus {
+        outline: none;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Responsive styles */
+    @media (max-width: 600px) {
+        .google-btn a {
+            font-size: 14px;
+            padding: 0.5rem 1rem;
+        }
+    }
+
+
     </style>
-</head>
-<body>
 
-    <div class="signup-container" >
-        <div class="signup-form">
-            <h2>Create Account</h2>
-            <form action="/collegeclub/signup" method="POST">
-                <div id="email-group" class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div id="username-group" class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div id="password-group" class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit">Sign Up</button>
-            </form>
-            
-            <div class="google-btn">
-                <a href="/auth/google" >Sign in with Google</a>
-             </div>
 
-            
-            <div class="login-link">
-                <p>Already have an account? <a href="/collegeclub/login">Log In</a></p>
-            </div>
 
-        </div>
-    </div>
-</body>
-</html>
+

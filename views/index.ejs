@@ -2,38 +2,51 @@
 
 <!-- Animated Introduction -->
 <div class="intro-text">
-    <h1>Welcome to the Club!</h1>
+    <h1>Welcome to the Dypcoe Club Society!</h1>
     <p>Discover the exciting world of clubs at DYPCOE. Choose your path below:</p>
 </div>
 
-<div class="panclub-circles-container">
-    <div class="panclub-item">
-        <a href="/collegeclub/panclubs" class="panclub-circle-link">
-            <div class="panclub-circle">
-                <img src="/images/panclubs.jpg" alt="PANCLUBS">
+<div class="panclub-cards-container">
+    <div class="panclub-card">
+        <a href="/collegeclub/panclubs" class="panclub-card-link">
+            <div class="panclub-card-content">
+                <p class="panclub-title">PAN CLUBS</p>
             </div>
-            <p class="panclub-title">PAN CLUBS</p>
         </a>
     </div>
 
-    <div class="panclub-item">
-        <a href="/collegeclub/depatmentclubs" class="panclub-circle-link">
-            <div class="panclub-circle">
-                <img src="/images/departmentclubs.jpg" alt="DEPARTMENT CLUBS">
+    <div class="panclub-card">
+        <a href="/collegeclub/departmentclubs" class="panclub-card-link">
+            <div class="panclub-card-content">
+                <p class="panclub-title">DEPARTMENT CLUBS</p>
             </div>
-            <p class="panclub-title">DEPARTMENT CLUBS</p>
         </a>
     </div>
 </div>
+<br>
+<br>
+
+<!-- Additional Content for Large Screens -->
+<div class="extra-content">
+    <h2 style="color: white;">Why Join Our Clubs?</h2>
+    <p>Our clubs offer a wide range of activities and opportunities to explore your interests, develop new skills, and connect with like-minded peers. Whether you’re passionate about technology, arts, culture, or sports, you’ll find a club that resonates with your goals.</p>
+
+    <h2 style="color: white;" >Upcoming Events</h2>
+    <p>We regularly host events and workshops that cater to diverse interests. From tech hackathons to cultural fests and sports tournaments, our clubs bring vibrant energy to the campus. Don’t miss out on these exciting opportunities!</p>
+
+    <h2 style="color: white;">Get Involved</h2>
+    <p>Joining a club is easy! Visit the club of your choice, participate in their activities, and become an active member. It's a great way to enhance your college experience and make lasting memories.</p>
+</div>
 
 <style>
+    /* Animated Introduction */
     .intro-text {
         color: white;
         text-align: center;
         font-size: 28px;
         margin: 30px 0;
         opacity: 0;
-        animation: fadeIn 2s ease-in-out forwards;
+        animation: fadeInUp 2s ease-in-out forwards;
     }
 
     .intro-text h1 {
@@ -43,6 +56,7 @@
 
     .intro-text p {
         font-size: 24px;
+        color: white;
     }
 
     @keyframes fadeInUp {
@@ -54,5 +68,108 @@
             opacity: 1;
             transform: translateY(0);
         }
+    }
+
+    /* Card Container Styling */
+    .panclub-cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px; /* Default gap between cards */
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .panclub-card {
+        background-color: #333; /* Dark background for cards */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Dark shadow */
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        width: 250px;
+        text-align: center;
+        color: white;
+    }
+
+    .panclub-card-link {
+        text-decoration: none;
+        color: white;
+        
+    }
+
+    .panclub-card-content {
+        padding: 15px;
+    }
+
+    .panclub-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0;
+        color: white; /* Light text color for contrast */
+    }
+
+    /* Increase card size and gap on larger screens */
+    @media (min-width: 1024px) {
+        .panclub-cards-container {
+            gap: 85px; /* Increased gap for large screens */
+        }
+
+        .panclub-card {
+            width: 300px;
+        }
+
+        .panclub-title {
+            font-size: 20px;
+        }
+
+        .extra-content {
+            margin-top: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white; /* Set text color to white */
+        }
+
+        .extra-content h2 {
+            font-size: 35px;
+            margin-bottom: 10px;
+            color: white; /* Ensure headings are also white */
+        }
+
+        .extra-content p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: white; /* Ensure paragraphs are also white */
+        }
+    }
+
+    /* Small Screen Spacing */
+    @media (max-width: 767px) {
+        .panclub-cards-container {
+            gap: 15px; /* Smaller gap for small screens */
+        }
+
+        .panclub-card {
+            width: 100%;
+        }
+
+        .extra-content {
+            padding: 0 15px;
+        }
+
+        .extra-content p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: white; /* Ensure paragraphs are also white */
+        }
+        .h2{
+            color: white !important;
+            
+        }
+        .extra-content h2 {
+            font-size: 35px;
+           
+            color: white; /* Ensure headings are also white */
+        }
+
     }
 </style>

@@ -1,0 +1,183 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="apply-container">
+    <h1>Apply to Our Clubs</h1>
+<!-- panclubs -->
+    <div class="apply-list">
+        <div class="apply-item">
+            <p>Apply For Gdsc   </p>
+            <a href="/collegeclub/panclubs/gdsc/apply" class="apply-btn">Apply</a>
+        </div>
+
+        <div class="apply-item">
+            <p>Apply For Offbit</p>
+            <a href="/collegeclub/panclubs/offbit/apply" class="apply-btn">Apply</a>
+        </div>
+        <div class="apply-item">
+            <p>Apply For Vihang </p>
+            <a href="/collegeclub/panclubs/vihang/apply" class="apply-btn">Apply</a>
+        </div>  
+
+        <div class="apply-item">
+            <p>Apply For Cpmc</p>
+            <a href="/collegeclub/panclubs/cpmc/apply" class="apply-btn">Apply</a>
+        </div>
+        
+
+        <div class="apply-item">
+            <p>Apply For Abhivyakti</p>
+            <a href="/collegeclub/panclubs/abhivyakti/apply" class="apply-btn">Apply</a>
+        </div>
+      
+        <div class="apply-item">
+            <p>Apply For Nss</p>
+            <a href="/collegeclub/panclubs/nss/apply" class="apply-btn">Apply</a>
+        </div>
+      
+        <div class="apply-item">
+            <p>Apply For Toastmaster</p>
+            <a href="/collegeclub/panclubs/toastmaster/apply" class="apply-btn">Apply</a>
+        </div>
+<!-- departmentclubs -->
+<div class="apply-item">
+    <p>Apply For Aces(computer science) </p>
+    <a href="/collegeclub/departmentclubs/computer/aces/apply" class="apply-btn">Apply</a>
+</div>
+
+<div class="apply-item">
+    <p>Apply For ACM (Computer Science)</p>
+    <a href="/collegeclub/departmentclubs/computer/acm/apply" class="apply-btn">Apply</a>
+</div>
+
+<div class="apply-item">
+    <p>Apply For S4DS (AIDS)</p>
+    <a href="/collegeclub/departmentclubs/aids/s4ds/apply" class="apply-btn">Apply</a>
+</div>
+
+<div class="apply-item">
+    <p>Apply For ISA (AIDS)</p>
+    <a href="/collegeclub/departmentclubs/aids/isa/apply" class="apply-btn">Apply</a>
+</div>
+
+<div class="apply-item">
+    <p>Apply For Enticers (ENTC)</p>
+    <a href="/collegeclub/departmentclubs/entc/enticers/apply" class="apply-btn">Apply</a>
+</div>
+
+<div class="apply-item">
+    <p>Apply For IETE (ENTC)</p>
+    <a href="/collegeclub/departmentclubs/entc/iete/apply" class="apply-btn">Apply</a>
+</div>
+
+<div class="apply-item">
+    <p>Apply For ITESA (IT)</p>
+    <a href="/collegeclub/departmentclubs/it/itesa/apply" class="apply-btn">Apply</a>
+</div>
+
+<div class="apply-item">
+    <p>Apply For MESA (Mechanical)</p>
+    <a href="/collegeclub/departmentclubs/mechanical/mesa/apply" class="apply-btn">Apply</a>
+</div>
+
+<div class="apply-item">
+    <p>Apply For Prediators (Mechanical)</p>
+    <a href="/collegeclub/departmentclubs/mechanical/prediators/apply" class="apply-btn">Apply</a>
+</div>
+
+<div class="apply-item">
+    <p>Apply For CESA (Civil)</p>
+    <a href="/collegeclub/departmentclubs/civil/cesa/apply" class="apply-btn">Apply</a>
+</div>
+
+<div class="apply-item">
+    <p>Apply For IGS (Civil)</p>
+    <a href="/collegeclub/departmentclubs/civil/igs/apply" class="apply-btn">Apply</a>
+</div>
+
+<div class="apply-item">
+    <p>Apply For SAIE (Instrumentation)</p>
+    <a href="/collegeclub/departmentclubs/instrumentation/saie/apply" class="apply-btn">Apply</a>
+</div>
+
+<div class="apply-item">
+    <p>Apply For SARA (Robotics)</p>
+    <a href="/collegeclub/departmentclubs/robotics/sara/apply" class="apply-btn">Apply</a>
+</div>
+
+    </div>
+</div>
+
+<style>
+    .apply-container {
+        padding: 20px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .apply-container h1 {
+        margin-bottom: 20px;
+        font-size: 32px;
+    }
+
+    .apply-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .apply-item {
+        background-color: #333;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .apply-item p {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .apply-btn {
+        background-color: darkgreen;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .apply-btn:hover {
+        background-color: green;
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+        .apply-item {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .apply-btn {
+            margin-top: 10px;
+            width: 100%;
+            max-width: 150px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .apply-container h1 {
+            font-size: 40px;
+        }
+
+        .apply-item p {
+            font-size: 20px;
+        }
+    }
+</style>
