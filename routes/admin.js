@@ -2,27 +2,27 @@ const express = require('express');
 const router = express.Router();
 const session = require('express-session');
 const flash = require('connect-flash')
-const User = require('../models/User'); // Adjust the path as needed
-const Aces = require('../models/Aces'); // Make sure the path is correct
-const Acm = require('../models/Acm'); // Make sure the path is correct
-const Cesa = require('../models/Cesa'); // Make sure the path is correct
-const Enticers = require('../models/Enticers'); // Import the Enticers model
-const Iete = require('../models/Iete'); // Import the Iete model
-const Igs = require('../models/Igs'); // Import the Iete model
-const Isa = require('../models/Isa'); // Import the Iete model
-const Itesa = require('../models/Itesa'); // Import the Iete model
-const Mesa = require('../models/Mesa'); // Import the Iete model
-const Abhivyakti = require('../models/PanclubsAbhivyaktiForm'); // Import the Iete model
-const PanclubsCpmcForm = require('../models/PanclubsCpmcForm'); // Import the PanclubsCpmcForm model
-const PanclubsGdscForm = require('../models/PanclubsGdscForm'); 
-const PanclubsNssForm = require('../models/PanclubsNssForm');
-const PanclubsOffbitForm = require('../models/PanclubsOffbitForm'); 
-const PanclubsToastmasterForm = require('../models/PanclubsToastmasterForm'); 
-const PanclubsVihangForm = require('../models/PanclubsVihangForm'); 
-const Prediators = require('../models/Prediators');
-const S4DS = require('../models/S4DS'); // Import your S4DS model
-const Saie = require('../models/Saie'); // Import your S4DS model
-const Sara = require('../models/Sara'); // Adjust the path as necessaryconst Sara = require('../models/Sara'); // Adjust the path as necessary
+const User = require('../models/user'); // Adjust the path as needed
+const Aces = require('../models/aces'); // Make sure the path is correct
+const Acm = require('../models/acm'); // Make sure the path is correct
+const Cesa = require('../models/cesa'); // Make sure the path is correct
+const Enticers = require('../models/enticers'); // Import the Enticers model
+const Iete = require('../models/iete'); // Import the Iete model
+const Igs = require('../models/igs'); // Import the Iete model
+const Isa = require('../models/isa'); // Import the Iete model
+const Itesa = require('../models/itesa'); // Import the Iete model
+const Mesa = require('../models/mesa'); // Import the Iete model
+const Abhivyakti = require('../models/panclubsAbhivyaktiForm'); // Import the Iete model
+const PanclubsCpmcForm = require('../models/panclubsCpmcForm'); // Import the PanclubsCpmcForm model
+const PanclubsGdscForm = require('../models/panclubsGdscForm'); 
+const PanclubsNssForm = require('../models/panclubsNssForm');
+const PanclubsOffbitForm = require('../models/panclubsOffbitForm'); 
+const PanclubsToastmasterForm = require('../models/panclubsToastmasterForm'); 
+const PanclubsVihangForm = require('../models/panclubsVihangForm'); 
+const Prediators = require('../models/prediators');
+const S4DS = require('../models/s4ds'); // Import your S4DS model
+const Saie = require('../models/saie'); // Import your S4DS model
+const Sara = require('../models/sara'); // Adjust the path as necessaryconst Sara = require('../models/Sara'); // Adjust the path as necessary
 
 
 
