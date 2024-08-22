@@ -1,960 +1,230 @@
 <%- layout('layouts/boilerplate') %>
 
-<main class="container">
-    <% if (userEmail === 'vedantshetti123456@gmail.com') { %>
-
-        <nav>
-            <ul>
-                <li><a href="/admin/dashboard">Dashboard</a></li>
-                <li><a href="/admin/dashboard/users">Users</a></li> <!-- Link to the users section -->
-                <!-- Add other navigation links here -->
-            </ul>
-        </nav>
-
-        
-        <!-- Users List -->
-        <h2 class="section-title">Users</h2>
-        <% if (users.length > 0) { %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Email</th>
-                        <th>Google ID</th>
-                        <th>Username</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% users.forEach(user => { %>
-                        <tr>
-                            <td><%= user._id %></td>
-                            <td><%= user.email %></td>
-                            <td><%= user.googleId || 'N/A' %></td>
-                            <td><%= user.username || 'N/A' %></td>
-                        </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-        <% } else { %>
-            <p class="no-users">No users found.</p>
-        <% } %>
-
-       
-        <!-- Panclubs GDSC Forms -->
-        <h2 class="section-title">GDSC CLUB INFORMATION</h2>
-        <% if (panclubsGdscForms.length > 0) { %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Department</th>
-                        <th>Role</th>
-                        <th>Year</th>
-                        <th>Project Link</th>
-                        <th>Resume</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% panclubsGdscForms.forEach(form => { %>
-                        <tr>
-                            <td><%= form._id %></td>
-                            <td><%= form.fullName || 'N/A' %></td>
-                            <td><%= form.email || 'N/A' %></td>
-                            <td><%= form.phone || 'N/A' %></td>
-                            <td><%= form.department || 'N/A' %></td>
-                            <td><%= form.role || 'N/A' %></td>
-                            <td><%= form.year || 'N/A' %></td>
-                            <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                            <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                            <td><%= form.createdAt.toDateString() || 'N/A' %></td>
-                            <td><%= form.updatedAt.toDateString() || 'N/A' %></td>
-                        </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-        <% } else { %>
-            <p class="no-data">NO APPLICATIONS YET FOR GDSC !</p>
-        <% } %>
-
-       <!-- Panclubs Offbit Forms -->
-<h2 class="section-title">OFFBIT CLUB INFORMATION</h2>
-<% if (panclubsOffbitForms.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% panclubsOffbitForms.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR OFFBIT!</p>
-<% } %>
-
-
- <!-- Panclubs Vihang Forms -->
-<h2 class="section-title">VIHANG CLUB INFORMATION</h2>
-<% if (panclubsVihangForms.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% panclubsVihangForms.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR VIHANG!</p>
-<% } %>
-
-
-<!-- Panclubs CPMc Forms -->
-<h2 class="section-title">CPMC CLUB INFORMATION</h2>
-<% if (panclubsCpmcForms.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% panclubsCpmcForms.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR CPMC!</p>
-<% } %>
-
-
-
-
-<!-- Panclubs Abhivyakti Forms -->
-<h2 class="section-title">ABHIVYAKTI CLUB INFORMATION</h2>
-<% if (panclubsAbhivyaktiForms.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% panclubsAbhivyaktiForms.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR ABHIVYAKTI!</p>
-<% } %>
-
-
-
-<!-- Panclubs NSS Forms -->
-<h2 class="section-title">NSS CLUB INFORMATION</h2>
-<% if (panclubsNssForms.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% panclubsNssForms.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR NSS!</p>
-<% } %>
-
-
-
-<!-- Panclubs Toastmaster Forms -->
-<h2 class="section-title">TOASTMASTER CLUB INFORMATION</h2>
-<% if (panclubsToastmasterForms.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% panclubsToastmasterForms.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR TOASTMASTER!</p>
-<% } %>
-
-
-
-
-
-
-<!-- Aces Forms -->
-<h2 class="section-title">ACES CLUB INFORMATION</h2>
-<% if (aces.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% aces.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt.toDateString() || 'N/A' %></td>
-                    <td><%= form.updatedAt.toDateString() || 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR ACES!</p>
-<% } %>
-
-
-
-<!-- ACM Forms -->
-<h2 class="section-title">ACM CLUB INFORMATION</h2>
-<% if (acm.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% acm.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR ACM!</p>
-<% } %>
-
-
-<!-- S4DS Forms -->
-<h2 class="section-title">S4DS CLUB INFORMATION</h2>
-<% if (s4ds.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% s4ds.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR S4DS!</p>
-<% } %>
-
-
-
-
-<!-- ISA Forms -->
-<h2 class="section-title">ISA CLUB INFORMATION</h2>
-<% if (isa.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% isa.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR ISA!</p>
-<% } %>
-
-
-
-
-<!-- Enticers Forms -->
-<h2 class="section-title">ENTICERS CLUB INFORMATION</h2>
-<% if (enticers.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% enticers.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR ENTICERS!</p>
-<% } %>
-
-
-
-<!-- IETE Forms -->
-<h2 class="section-title">IETE CLUB INFORMATION</h2>
-<% if (iete.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% iete.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR IETE!</p>
-<% } %>
-
-
-<!-- ITESA Forms -->
-<h2 class="section-title">ITESA CLUB INFORMATION</h2>
-<% if (itesa.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% itesa.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR ITESA!</p>
-<% } %>
-
-
-<!-- Mesa Forms -->
-<h2 class="section-title">MESA CLUB INFORMATION</h2>
-<% if (mesa.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% mesa.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR MESA!</p>
-<% } %>
-
-
-
-<!-- Prediators Forms -->
-<h2 class="section-title">PREDIATORS CLUB INFORMATION</h2>
-<% if (prediators.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% prediators.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR PREDIATORS!</p>
-<% } %>
-
-
-<!-- CESA Forms -->
-<h2 class="section-title">CESA CLUB INFORMATION</h2>
-<% if (cesa.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% cesa.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR CESA!</p>
-<% } %>
-
-
-
-
-
-<!-- IGS Forms -->
-<h2 class="section-title">IGS CLUB INFORMATION</h2>
-<% if (igs.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% igs.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR IGS!</p>
-<% } %>
-
-
-
-
-<!-- SAIE Forms -->
-<h2 class="section-title">SAIE CLUB INFORMATION</h2>
-<% if (saie.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% saie.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR SAIE!</p>
-<% } %>
-
-
-
-<!-- SARA Forms -->
-<h2 class="section-title">SARA CLUB INFORMATION</h2>
-<% if (sara.length > 0) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th>Role</th>
-                <th>Year</th>
-                <th>Project Link</th>
-                <th>Resume</th>
-                <th>Created At</th>
-                <th>Updated At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% sara.forEach(form => { %>
-                <tr>
-                    <td><%= form._id %></td>
-                    <td><%= form.fullName || 'N/A' %></td>
-                    <td><%= form.email || 'N/A' %></td>
-                    <td><%= form.phone || 'N/A' %></td>
-                    <td><%= form.department || 'N/A' %></td>
-                    <td><%= form.role || 'N/A' %></td>
-                    <td><%= form.year || 'N/A' %></td>
-                    <td><a href="<%= form.projectLink %>" target="_blank">Project Link</a></td>
-                    <td><a href="<%= form.resume %>" target="_blank">Resume</a></td>
-                    <td><%= form.createdAt ? form.createdAt.toDateString() : 'N/A' %></td>
-                    <td><%= form.updatedAt ? form.updatedAt.toDateString() : 'N/A' %></td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-<% } else { %>
-    <p class="no-data">NO APPLICATIONS YET FOR SARA!</p>
-<% } %>
-
-
-
-
-
-
-
-
-
-
-
-
-    <% } else { %>
-        <p class="no-access">You do not have permission to view this data.</p>
-    <% } %>
-</main>
+<div class="panclub-cards-container">
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/user" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">USER DATA</p>
+          </div>
+        </a>
+    </div>
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/aces" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">ACES DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/acm" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">ACM DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/cesa" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">CESA DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/enticers" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">ENTICERS DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/iete" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">IETE DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/igs" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">IGS DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/isa" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">ISA DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/itesa" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">ITESA DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/mesa" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">MESA DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/abhivyakti" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">ABHIVYAKTI DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/cpmc" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">CPMC DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/gdsc" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">GDSC DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/nss" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">NSS DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/offbit" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">OFFBIT DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/toastmaster" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">TOASTMASTER DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/vihang" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">VIHANG DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/prediators" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">PREDIATORS DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/s4ds" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">S4DS DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/saie" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">SAIE DATA</p>
+          </div>
+        </a>
+    </div>
+
+    <div class="panclub-card">
+        <a href="/collegeclub/admin/dashboard/sara" class="panclub-card-link">
+          <div class="panclub-card-content">
+            <p class="panclub-title">SARA DATA</p>
+          </div>
+        </a>
+    </div>
+
+    
+</div>
 
 <style>
-    /* Add your common styles here */
-  
-    main {
-        padding: 20px;
+.panclub-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Default gap between cards */
+    justify-content: center;
+    padding: 20px;
+}
+
+.panclub-card {
+    background-color: #333; /* Black card background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Dark shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 250px;
+    text-align: center;
+}
+
+.panclub-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.panclub-card-content {
+    padding: 15px;
+}
+
+.panclub-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    color: #f0f0f0; /* Light text color for contrast */
+}
+
+/* Increase card size and gap on larger screens */
+@media (min-width: 1024px) {
+    .panclub-cards-container {
+        gap: 85px; /* Increased gap for large screens */
     }
-    .container {
-        width: 100%;
-        margin: 0 auto;
+
+    .panclub-card {
+        width: 300px;
     }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    .panclub-title {
+        font-size: 20px;
     }
-    table, th, td {
-        border: 1px solid #ddd;
+}
+
+/* Hover effect only on larger screens */
+@media (min-width: 768px) {
+    .panclub-card:hover {
+        transform: translateY(-5px);
     }
-    th, td {
-        padding: 10px;
-        text-align: left;
-    }
-    th {
-        background-color: #f4f4f4;
-    }
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-    .section-title {
-        margin-top: 40px;
-        font-size: 1.5em;
-        color: #fff;
-    }
-    .no-data, .no-users {
-        color: #fff;
-       
-    }
+}
 </style>

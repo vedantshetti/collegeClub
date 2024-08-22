@@ -23,15 +23,18 @@ const PanclubsToastmasterFormSchema = new Schema({
         required: true
     },
     projectLink: {
-        type: String, required: true
+        type: String,
+        required: true
     },
     resume: {
-        type: String, required: true
+        type: String,
+        required: true
     }
 }, {
     timestamps: true
 });
 
-const PanclubsToastmasterForm = mongoose.model('PanclubsToastmasterForm', PanclubsToastmasterFormSchema);
+// Check if the model already exists
+const PanclubsToastmasterForm = mongoose.models.PanclubsToastmasterForm || mongoose.model('PanclubsToastmasterForm', PanclubsToastmasterFormSchema);
 
 module.exports = PanclubsToastmasterForm;

@@ -26,11 +26,16 @@ const igsSchema = new mongoose.Schema({
         required: true
     },
     projectLink: {
-        type: String,required: true
+        type: String,
+        required: true
     },
     resume: {
-        type: String,required: true
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Igs', igsSchema);
+// Check if model is already defined
+const Igs = mongoose.models.Igs || mongoose.model('Igs', igsSchema);
+
+module.exports = Igs;

@@ -13,4 +13,5 @@ const UserSchema = new mongoose.Schema({
 // This plugin adds username and password fields automatically
 UserSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('User', UserSchema);
+// Check if the model is already defined to avoid OverwriteModelError
+module.exports = mongoose.models.User || mongoose.model('User', UserSchema);

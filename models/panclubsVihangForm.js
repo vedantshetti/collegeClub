@@ -22,13 +22,17 @@ const panclubsVihangFormSchema = new mongoose.Schema({
         required: true
     },
     projectLink: {
-        type: String, required: true
+        type: String,
+        required: true
     },
     resume: {
-        type: String, required: true
+        type: String,
+        required: true
     }
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model('PanclubsVihangForm', panclubsVihangFormSchema);
+const PanclubsVihangForm = mongoose.models.PanclubsVihangForm || mongoose.model('PanclubsVihangForm', panclubsVihangFormSchema);
+
+module.exports = PanclubsVihangForm;

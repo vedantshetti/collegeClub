@@ -29,13 +29,16 @@ const prediatorsSchema = new Schema({
         required: true
     },
     projectLink: {
-        type: String, required: true
+        type: String,
+        required: true
     },
     resume: {
-        type: String, required: true
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 
-const Prediators = mongoose.model('Prediators', prediatorsSchema);
+// Use the model if it is already compiled, otherwise compile it
+const Prediators = mongoose.models.Prediators || mongoose.model('Prediators', prediatorsSchema);
 
 module.exports = Prediators;

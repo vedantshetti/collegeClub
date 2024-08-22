@@ -7,12 +7,11 @@ const acmSchema = new mongoose.Schema({
     department: { type: String, default: 'Computer Science' },
     role: { type: String, required: true },
     year: { type: Number, required: true },
-    projectLink: { type: String,
-        required: true },
-    resume: { type: String,
-        required: true }
+    projectLink: { type: String, required: true },
+    resume: { type: String, required: true }
 }, { timestamps: true });
 
-const Acm = mongoose.model('Acm', acmSchema);
+// Check if the model is already defined
+const Acm = mongoose.models.Acm || mongoose.model('Acm', acmSchema);
 
 module.exports = Acm;

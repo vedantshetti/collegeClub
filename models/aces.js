@@ -7,12 +7,9 @@ const acesSchema = new mongoose.Schema({
     department: { type: String, default: 'Computer Science' },
     role: { type: String, required: true },
     year: { type: String, required: true },
-    projectLink: { type: String ,
-        required: true },
-    resume: { type: String ,
-        required: true}
-}, { timestamps: true }); // Adds createdAt and updatedAt fields
+    projectLink: { type: String, required: true },
+    resume: { type: String, required: true }
+}, { timestamps: true });
 
-const Aces = mongoose.model('Aces', acesSchema);
-
-module.exports = Aces;
+// Check if the model is already defined to avoid OverwriteModelError
+module.exports = mongoose.models.Aces || mongoose.model('Aces', acesSchema);

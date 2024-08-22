@@ -40,7 +40,7 @@ const Saie = require('./models/saie');
 const Sara = require('./models/sara');
 const departmentclubsRoutes = require('./routes/departmentclubs');
 const panclubsRoutes = require('./routes/panclubs');
-
+const adminRoutes = require('./routes/admin');
 
 
 
@@ -239,6 +239,7 @@ app.get('/collegeclub/Apply', (req, res) => {
 app.use('/collegeclub', userRoutes);
 app.use('/collegeclub/panclubs', panclubsRoutes);
 app.use('/collegeclub/departmentclubs', departmentclubsRoutes);
+app.use('/collegeclub/admin', adminRoutes);
 
 
 
@@ -253,7 +254,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
 });
 
 // Admin Dashboard Route
-app.get('/admin/dashboard', isLoggedIn, async (req, res) => {
+app.get('/collegeclub/admin/dashboard', isLoggedIn, async (req, res) => {
     try {
         const [users, aces, acm, cesa, enticers, iete, igs, isa, itesa, mesa, 
                 panclubsAbhivyaktiForms, panclubsCpmcForms, panclubsGdscForms, 
@@ -316,6 +317,8 @@ app.get('/admin/dashboard', isLoggedIn, async (req, res) => {
         res.redirect('/'); // Redirect to a safe page if there’s an error
     }
 });
+
+// Route to render user.ejs
 
 // Catch-all Route for 404 Errors
 app.all("*", (req, res, next) => {

@@ -33,4 +33,7 @@ const saieSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Saie', saieSchema);
+// Check if the model is already defined
+const Saie = mongoose.models.Saie || mongoose.model('Saie', saieSchema);
+
+module.exports = Saie;

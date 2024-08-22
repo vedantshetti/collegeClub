@@ -31,10 +31,11 @@ const panclubsGdscFormSchema = new mongoose.Schema({
     },
     resume: {
         type: String,
-        required: true // This should be a valid requirement
+        required: true
     }
 }, { timestamps: true });
 
-const PanclubsGdscForm = mongoose.model('PanclubsGdscForm', panclubsGdscFormSchema);
+// Check if the model is already defined
+const PanclubsGdscForm = mongoose.models.PanclubsGdscForm || mongoose.model('PanclubsGdscForm', panclubsGdscFormSchema);
 
 module.exports = PanclubsGdscForm;

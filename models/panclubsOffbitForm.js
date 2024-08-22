@@ -26,13 +26,15 @@ const panclubsOffbitFormSchema = new mongoose.Schema({
         required: true
     },
     projectLink: {
-        type: String, required: true
+        type: String,
+        required: true
     },
     resume: {
-        type: String, required: true
+        type: String,
+        required: true
     }
-});
+}, { timestamps: true });
 
-const PanclubsOffbitForm = mongoose.model('PanclubsOffbitForm', panclubsOffbitFormSchema);
+const PanclubsOffbitForm = mongoose.models.PanclubsOffbitForm || mongoose.model('PanclubsOffbitForm', panclubsOffbitFormSchema);
 
 module.exports = PanclubsOffbitForm;

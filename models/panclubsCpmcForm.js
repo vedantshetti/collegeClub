@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const PanclubsCpmcFormSchema = new Schema({
+// Check if the model is already defined
+const PanclubsCpmcForm = mongoose.models.PanclubsCpmcForm || mongoose.model('PanclubsCpmcForm', new Schema({
     fullName: {
         type: String,
         required: true
@@ -27,15 +28,15 @@ const PanclubsCpmcFormSchema = new Schema({
         required: true
     },
     projectLink: {
-        type: String, required: true
+        type: String,
+        required: true
     },
     resume: {
-        type: String, required: true
+        type: String,
+        required: true
     }
 }, {
     timestamps: true
-});
-
-const PanclubsCpmcForm = mongoose.model('PanclubsCpmcForm', PanclubsCpmcFormSchema);
+}));
 
 module.exports = PanclubsCpmcForm;

@@ -26,13 +26,16 @@ const saraSchema = new mongoose.Schema({
         required: true
     },
     projectLink: {
-        type: String, required: true
+        type: String,
+        required: true
     },
     resume: {
-        type: String, required: true
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 
-const Sara = mongoose.model('Sara', saraSchema);
+// Check if the model already exists, otherwise create it
+const Sara = mongoose.models.Sara || mongoose.model('Sara', saraSchema);
 
 module.exports = Sara;

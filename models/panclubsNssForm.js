@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const PanclubsNssFormSchema = new Schema({
+const panclubsNssFormSchema = new mongoose.Schema({
     fullName: {
         type: String,
         required: true
@@ -22,16 +21,21 @@ const PanclubsNssFormSchema = new Schema({
         type: String,
         required: true
     },
+    year: {
+        type: String,
+        required: true
+    },
     projectLink: {
-        type: String, required: true
+        type: String,
+        required: true
     },
     resume: {
-        type: String, required: true
+        type: String,
+        required: true
     }
-}, {
-    timestamps: true
-});
+}, { timestamps: true });
 
-const PanclubsNssForm = mongoose.model('PanclubsNssForm', PanclubsNssFormSchema);
+// Check if the model is already defined
+const PanclubsNssForm = mongoose.models.PanclubsNssForm || mongoose.model('PanclubsNssForm', panclubsNssFormSchema);
 
 module.exports = PanclubsNssForm;

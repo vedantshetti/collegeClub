@@ -12,4 +12,6 @@ const itesaSchema = new Schema({
     resume: { type: String, required: true },
 }, { timestamps: true });
 
-module.exports = mongoose.model('Itesa', itesaSchema);
+const Itesa = mongoose.models.Itesa || mongoose.model('Itesa', itesaSchema);
+
+module.exports = Itesa;

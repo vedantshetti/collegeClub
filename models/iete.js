@@ -8,8 +8,11 @@ const ieteSchema = new Schema({
     department: { type: String, default: 'Electronics and Telecommunication' },
     role: { type: String, required: true },
     year: { type: Number, required: true },
-    projectLink: { type: String ,required: true},
-    resume: { type: String,required: true },
+    projectLink: { type: String, required: true },
+    resume: { type: String, required: true },
 }, { timestamps: true });
 
-module.exports = mongoose.model('Iete', ieteSchema);
+// Use mongoose.models to avoid overwriting the model
+const Iete = mongoose.models.Iete || mongoose.model('Iete', ieteSchema);
+
+module.exports = Iete;

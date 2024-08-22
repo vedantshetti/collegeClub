@@ -8,8 +8,11 @@ const isaSchema = new Schema({
     department: { type: String, default: 'Artificial Intelligence and Data Science' },
     role: { type: String, required: true },
     year: { type: Number, required: true },
-    projectLink: { type: String, required: true},
-    resume: { type: String , required: true},
+    projectLink: { type: String, required: true },
+    resume: { type: String, required: true },
 }, { timestamps: true });
 
-module.exports = mongoose.model('Isa', isaSchema);
+// Check if the model already exists to avoid OverwriteModelError
+const Isa = mongoose.models.Isa || mongoose.model('Isa', isaSchema);
+
+module.exports = Isa;

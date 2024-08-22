@@ -33,10 +33,12 @@ const cesaSchema = new Schema({
         required: true
     },
     resume: {
-        type: String,required: true
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 
-const Cesa = mongoose.model('Cesa', cesaSchema);
+// Check if the model is already defined
+const Cesa = mongoose.models.Cesa || mongoose.model('Cesa', cesaSchema);
 
 module.exports = Cesa;
