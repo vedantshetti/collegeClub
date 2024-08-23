@@ -41,6 +41,7 @@ const Sara = require('./models/sara');
 const departmentclubsRoutes = require('./routes/departmentclubs');
 const panclubsRoutes = require('./routes/panclubs');
 const adminRoutes = require('./routes/admin');
+const Pastevents = require('./models/Pastevents');
 
 
 
@@ -76,6 +77,8 @@ app.set('views', path.join(__dirname, 'views'));
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static('public/uploads'));
+
 
 // Configure MongoDB Store for Sessions
 const store = MongoStore.create({
@@ -315,6 +318,22 @@ app.get('/collegeclub/admin/dashboard', isLoggedIn, async (req, res) => {
         console.error(err);
         req.flash('error', 'Failed to retrieve data');
         res.redirect('/'); // Redirect to a safe page if there’s an error
+    }
+});
+
+
+// Route for displaying events on the pastevents page
+// Route to display past events
+app.get('/collegeclub/pastevents', async (req, res) => {
+    try {
+        const events = await Pastevents.find({});
+        res.render('pastevents', { 
+            title: 'Past Events',
+            events
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('An error occurred while fetching events data.');
     }
 });
 

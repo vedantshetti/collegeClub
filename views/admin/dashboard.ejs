@@ -1,5 +1,6 @@
 <%- layout('layouts/boilerplate') %>
-
+<% if (userEmail === 'vedantshetti123456@gmail.com') { %>
+  <h2 class="section-title"></h2>
 <div class="panclub-cards-container">
     <div class="panclub-card">
         <a href="/collegeclub/admin/dashboard/user" class="panclub-card-link">
@@ -168,6 +169,18 @@
         </a>
     </div>
 
+    <div class="panclub-card">
+      <a href="/collegeclub/admin/dashboard/pastevents" class="panclub-card-link">
+        <div class="panclub-card-content">
+          <p class="panclub-title">ADD EVENTS</p>
+        </div>
+      </a>
+  </div>
+
+  
+<% } else { %>
+  <p class="no-access">You do not have permission to view this data.</p>
+<% } %>
     
 </div>
 

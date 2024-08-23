@@ -1,0 +1,175 @@
+<%- layout('layouts/boilerplate') %>
+
+<div class="container mt-5">
+    <div class="d-flex">
+        <!-- Form Section -->
+        <div class="form-container me-4">
+            <h2 class="text-center mb-4"></h2>
+            <form action="/collegeclub/admin/dashboard/pastevents/add" method="POST" enctype="multipart/form-data" class="shadow p-4 bg-light rounded">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Event Title:</label>
+                    <input type="text" id="title" name="title" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Event Image:</label>
+                    <input type="file" id="image" name="image" class="form-control" required>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-block">Add Event</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Events Container -->
+        <div class="offbit-container flex-grow-1">
+            <div class="event-list">
+                <% if (events.length) { %>
+                    <% events.forEach(event => { %>
+                        <div class="post">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="<%= event.image %>" class="post-img" alt="<%= event.title %>">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= event.title %> <p><%= event.description %></p></h5>
+                                    <form action="/collegeclub/admin/dashboard/pastevents/delete/<%= event._id %>" method="POST" class="delete-form">
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p style="color: white;" class="text-center">No events to display.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .container {
+        max-width: 1200px; /* Increased width for side-by-side layout */
+    }
+
+    .d-flex {
+        display: flex;
+        gap: 20px; /* Space between the form and event list */
+    }
+
+    .form-container {
+        flex: 1;
+        max-width: 600px; /* Increased the maximum width of the form */
+    }
+
+    .offbit-container {
+        flex: 2; /* Allow event list to take up more space */
+        padding: 20px;
+    }
+
+    h2 {
+        font-family: 'Arial', sans-serif;
+        color: #333;
+    }
+
+    form {
+        background-color: #f9f9f9;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    textarea {
+        resize: vertical; /* Allow vertical resizing */
+    }
+
+    button {
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .event-list {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        gap: 20px; /* Spacing between events */
+    }
+
+    .post {
+        width: 100%;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .card {
+        border: none;
+        display: flex;
+        flex-direction: column; /* Ensure card content stacks vertically */
+    }
+
+    .card-img {
+        overflow: hidden;
+    }
+
+    .post-img {
+        width: 100%;
+        height: auto; /* Maintain aspect ratio */
+        object-fit: cover; /* Ensure image covers the card area */
+    }
+
+    .card-body {
+        display: flex;
+        justify-content: space-between; /* Space between content and button */
+        align-items: center; /* Align items vertically */
+        padding: 10px; /* Padding for spacing */
+        background-color: #333; /* Background color of the text container */
+        color: #fff; /* Text color */
+    }
+
+    .card-title {
+        flex: 1; /* Allow title to take up remaining space */
+    }
+
+    .card-title p {
+        margin: 0; /* Remove default margin */
+    }
+
+    .delete-form {
+        margin: 0; /* Remove default margin */
+    }
+
+    .btn-danger {
+        background-color: #dc3545; /* Bootstrap danger color */
+        border-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+    .logout-button {
+        background-color: rgb(69, 66, 66);
+        color: #fff;
+        font-size: 16px;
+        padding: 9px 25px;
+        border-radius: 2px;
+        text-decoration: none;
+        transition: 0.3s background-color;
+    }
+
+    .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    border-radius: 0px;
+}
+
+</style>

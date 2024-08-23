@@ -1,0 +1,462 @@
+<%- layout('layouts/boilerplate') %>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        display: flex;
+        height: 100vh;
+        flex-wrap: wrap;
+    }
+
+    .box {
+        position: relative;
+        left: 20px;
+        top: 50px;
+        width: 90%;
+        height: 45px;
+    }
+
+    .box .search-input {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        background-color: rgb(241, 240, 240);
+        border-radius: 5px;
+        padding-left: 20px;
+        font-size: 20px;
+    }
+
+    .output {
+        position: relative;
+        top: 40%;
+        left: 30%;
+        font-size: 16px;
+    }
+
+    .search p {
+        position: relative;
+        left: 35px;
+        top: 80px;
+    }
+
+    .show-search {
+        visibility: visible;
+        left: 70px;
+    }
+
+    .mypost-img {
+        width: 60px;
+        height: 60px;
+        margin-left: 50px;
+    }
+
+    .scrollable-noti h5 {
+        margin: 20px;
+    }
+
+    .persons {
+        display: flex;
+        margin-left: 15px;
+    }
+
+    .myprofile-img {
+        width: 50px;
+        margin: 2px;
+        border-radius: 50%;
+    }
+
+    .follow-btn {
+        margin-top: 10px;
+        margin-left: 15px;
+        width: 90px;
+        height: 30px;
+        color: white;
+        background-color: #405DE6;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .scrollable-noti {
+        max-height: 100vh;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    .show-notificaion {
+        visibility: visible;
+        left: 70px;
+    }
+
+    .create {
+        position: absolute;
+        width: 500px;
+        height: 550px;
+        top: 0;
+        left: 35%;
+        transform: translate(-50% -50%);
+        background-color: white;
+        border-radius: 4%;
+        box-shadow: 5px 0 20px 0 rgba(0, 0, 0, 0.2);
+        visibility: hidden;
+        transition: top 0.3s ease;
+    }
+
+    .create .head {
+        padding: 10px;
+        border-bottom: 1px solid lightgray;
+        display: flex;
+    }
+
+    .create .head h3 {
+        text-align: center;
+        font-size: 20px;
+        flex: 1;
+    }
+
+    .close-img {
+        width: 20px;
+        cursor: pointer;
+    }
+
+    .create-prompt {
+        position: relative;
+        align-items: center;
+        text-align: center;
+        top: 30%;
+    }
+
+    .create-prompt button {
+        width: auto;
+        height: 35px;
+        outline: none;
+        border: none;
+        color: white;
+        font-size: 14px;
+        background-color: #405DE6;
+        border-radius: 4px;
+        padding: 5px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    .show-createbox {
+        visibility: visible;
+        top: 10%;
+    }
+
+    .post {
+        margin-left: 190px;
+        width: 478px;
+        height: auto;
+        border-radius: 6px;
+        margin-bottom: 40px;
+        overflow: hidden;
+    }
+
+    .profile-section {
+        margin-left: 40px;
+        margin-top: 50px;
+        width: 400px;
+        height: 400px;
+    }
+
+    .stories {
+        width: 478px;
+        height: 120px;
+        border: 1px solid lightgrey;
+        border-radius: 6px;
+        background-color: azure;
+        box-shadow: 0 5px 10px rgba(255, 255, 255, 0.4);
+        margin-top: 22px;
+    }
+
+    .user-post {
+        margin-top: 30px;
+        width: 478px;
+        border: 1px solid lightgray;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .storeis-img {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    .card-title {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        background-color: #f0f0f0;
+    }
+
+    .profile-img {
+        width: 35px;
+        margin: 7px;
+    }
+
+    .card-title a {
+        display: flex;
+        text-decoration: none;
+        color: black;
+        align-items: center;
+    }
+
+    .card-title a p {
+        margin-top: 16px;
+        font-size: 16px;
+    }
+
+    .three-dots {
+        margin-left: auto;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .post-img {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    .bluetick {
+        width: 12px;
+        height: 12px;
+        margin-top: 17px;
+        margin-left: 5px;
+    }
+
+    .likesharebutton {
+        display: flex;
+        margin: 7px;
+        cursor: pointer;
+    }
+
+    .save {
+        margin-left: auto;
+        cursor: pointer;
+    }
+
+    .like {
+        margin-top: 15px;
+        margin-left: 7px;
+    }
+
+    .comment {
+        margin-top: 10px;
+        margin-left: 7px;
+        color: gray;
+        cursor: pointer;
+    }
+
+    .comment-box {
+        margin-top: 10px;
+        height: 100px;
+        display: flex;
+        border-top: 1px solid lightgray;
+    }
+
+    .input {
+        width: 360px;
+        height: 30px;
+        margin-top: 8px;
+        margin-left: 5px;
+        margin-bottom: 5px;
+        border: none;
+        outline: none;
+    }
+
+    .emoji {
+        width: 25px;
+        height: 25px;
+        margin: 8px;
+    }
+
+    .myprofile {
+        display: flex;
+    }
+
+    .myprofile-img {
+        width: 60px;
+        margin: 8px;
+    }
+
+    .suggestion {
+        margin-left: 20px;
+        margin-top: 20px;
+        display: flex;
+    }
+
+    .suggprofile-img {
+        width: 30px;
+        height: 30px;
+        margin: 8px;
+    }
+
+    .links {
+        margin-top: 35px;
+    }
+
+    .smnav {
+        display: none;
+    }
+
+    .fixed {
+        display: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .side-nav {
+            display: none;
+        }
+
+        .left-panel {
+            width: 0;
+            max-width: 0;
+        }
+
+        .scrollable {
+            height: 100vh;
+            overflow-y: scroll;
+            position: relative;
+        }
+
+        .scrollable::-webkit-scrollbar {
+            display: none;
+        }
+
+        .profile-section {
+            display: none;
+            margin: 0;
+        }
+
+        .post {
+            margin: 0 auto;
+            width: 355px;
+        }
+
+        .user-post {
+            margin-top: 30px;
+            width: 355px;
+            height: auto;
+        }
+
+        .card-title {
+            width: 355px;
+        }
+
+        .post-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .save {
+            margin-left: 250px;
+        }
+
+        .nav-img {
+            width: 15px;
+            margin-right: 10px;
+        }
+
+        .input {
+            width: 230px;
+        }
+    }
+
+    .container {
+        display: flex;
+        height: 0vh;
+        flex-wrap: wrap;
+    }
+
+    html, body {
+        height: 40000000000000000000000000000000px;
+    }
+
+
+    /* Global styles for text elements */
+.card-title, .post p {
+    background-color: #333; /* Background color of text elements */
+    color: white; /* Text color */
+    padding: 10px; /* Add padding if needed for better readability */
+    border-radius: 4px; /* Optional: rounded corners */
+}
+
+/* Additional styles for .card-title to ensure correct appearance */
+.card-title {
+    padding: 10px; /* Ensure padding for readability */
+}
+
+/* Ensure the body and content areas do not override the text color */
+body, .content {
+    color: black; /* Default text color to ensure other text elements are unaffected */
+}
+
+.offbit-container {
+    padding: 20px; /* Optional: padding around container */
+}
+
+/* Card Image Border Styling */
+.card-img img {
+    border: 2px solid #333; /* Border color and width */
+    border-radius: 6px; /* Optional: rounded corners for images */
+    width: 100%; /* Ensures image fills the container */
+    height: auto; /* Maintains aspect ratio */
+}
+/* Card Image Styling */
+.card-img img {
+    border: none; /* Remove border line */
+    border-radius: 6px; /* Optional: rounded corners for images */
+    width: 100%; /* Ensures image fills the container */
+    height: auto; /* Maintains aspect ratio */
+}
+
+/* Card Title and Text Styling */
+.card-title {
+    background-color: #333; /* Background color of the text container */
+    color: #fff; /* Text color */
+    padding: 10px; /* Padding for spacing */
+    border-radius: 6px; /* Optional: rounded corners */
+}
+
+.card-title p {
+    margin: 0; /* Remove default margin */
+}
+
+/* Card Container Styling */
+
+body, .content {
+    color: #f3f5f7;
+}
+</style>
+
+<div class="offbit-container">
+    <div>
+        <% if (events.length) { %>
+            <% events.forEach(event => { %>
+        <div class="post">
+            <div class="user-post">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="<%= event.image %>" class="post-img" alt="<%= event.title %>">
+                    </div>
+                </div>
+                <h5 class="card-title"><%= event.title %>  <p><%= event.description %></p></h5>
+            </div>
+        </div>
+        <% }); %>
+        <% } else { %>
+            <p class="text-center">No events to display.</p>
+        <% } %>
+    </div>
+</div>

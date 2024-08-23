@@ -1,31 +1,102 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const session = require('express-session');
-const flash = require('connect-flash')
-const User = require('../models/user'); // Adjust the path as needed
-const Aces = require('../models/aces'); // Make sure the path is correct
-const Acm = require('../models/acm'); // Make sure the path is correct
-const Cesa = require('../models/cesa'); // Make sure the path is correct
-const Enticers = require('../models/enticers'); // Import the Enticers model
-const Iete = require('../models/iete'); // Import the Iete model
-const Igs = require('../models/igs'); // Import the Iete model
-const Isa = require('../models/isa'); // Import the Iete model
-const Itesa = require('../models/itesa'); // Import the Iete model
-const Mesa = require('../models/mesa'); // Import the Iete model
-const Abhivyakti = require('../models/panclubsAbhivyaktiForm'); // Import the Iete model
-const PanclubsCpmcForm = require('../models/panclubsCpmcForm'); // Import the PanclubsCpmcForm model
-const PanclubsGdscForm = require('../models/panclubsGdscForm'); 
+const flash = require('connect-flash');
+const multer = require('multer');
+const { storage } = require('../cloudConfig'); // Import Cloudinary storage
+const upload = multer({ storage }); // Use Cloudinary storage
+
+// Import your models
+const User = require('../models/user');
+const Aces = require('../models/aces');
+const Acm = require('../models/acm');
+const Cesa = require('../models/cesa');
+const Enticers = require('../models/enticers');
+const Iete = require('../models/iete');
+const Igs = require('../models/igs');
+const Isa = require('../models/isa');
+const Itesa = require('../models/itesa');
+const Mesa = require('../models/mesa');
+const Abhivyakti = require('../models/panclubsAbhivyaktiForm');
+const PanclubsCpmcForm = require('../models/panclubsCpmcForm');
+const PanclubsGdscForm = require('../models/panclubsGdscForm');
 const PanclubsNssForm = require('../models/panclubsNssForm');
-const PanclubsOffbitForm = require('../models/panclubsOffbitForm'); 
-const PanclubsToastmasterForm = require('../models/panclubsToastmasterForm'); 
-const PanclubsVihangForm = require('../models/panclubsVihangForm'); 
+const PanclubsOffbitForm = require('../models/panclubsOffbitForm');
+const PanclubsToastmasterForm = require('../models/panclubsToastmasterForm');
+const PanclubsVihangForm = require('../models/panclubsVihangForm');
 const Prediators = require('../models/prediators');
-const S4DS = require('../models/s4ds'); // Import your S4DS model
-const Saie = require('../models/saie'); // Import your S4DS model
-const Sara = require('../models/sara'); // Adjust the path as necessaryconst Sara = require('../models/Sara'); // Adjust the path as necessary
+const S4DS = require('../models/s4ds');
+const Saie = require('../models/saie');
+const Sara = require('../models/sara');
+const Pastevents = require('../models/Pastevents'); // Ensure the path is correct
 
 
 
+router.use(express.static('public'));
+
+// Connect to MongoDB
+async function main() {
+    try {
+        await mongoose.connect(process.env.ATLASDB_URL);
+        console.log("connected to DB");
+    } catch (err) {
+        console.log(err);
+    }
+}
+main();
+
+
+// Route to display all past events
+router.get('/pastevents', async (req, res) => {
+    try {
+        const events = await Pastevents.find({});
+        res.render('pastevents', { title: 'Past Events', events });
+    } catch (error) {
+        res.send('Error retrieving events');
+    }
+});
+
+// Route to display all past events in the admin panel
+router.get('/dashboard/pastevents', async (req, res) => {
+    try {
+        const events = await Pastevents.find({});
+        res.render('admin/pastevents', { title: 'Admin - Past Events', events });
+    } catch (error) {
+        console.error('Error retrieving events:', error);
+        res.status(500).send('Error retrieving events');
+    }
+});
+
+router.post('/dashboard/pastevents/add', upload.single('image'), async (req, res) => {
+    try {
+        const { title, description } = req.body;
+        const newEvent = new Pastevents({
+            title,
+            description,
+            image: req.file.path // Cloudinary URL
+        });
+        await newEvent.save();
+        req.flash('success', 'Event added successfully');
+        res.redirect('/collegeclub/admin/dashboard/pastevents');
+    } catch (error) {
+        req.flash('error', 'Error adding event');
+        res.redirect('/collegeclub/admin/dashboard/pastevents');
+    }
+});
+
+router.post('/dashboard/pastevents/delete/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Pastevents.findByIdAndDelete(id);
+        req.flash('success', 'Event deleted successfully');
+        res.redirect('/collegeclub/admin/dashboard/pastevents');
+    } catch (error) {
+        console.error('Error deleting event:', error);
+        req.flash('error', 'Error deleting event');
+        res.redirect('/collegeclub/admin/dashboard/pastevents');
+    }
+});
 
 
 
@@ -57,7 +128,7 @@ router.post('/dashboard/users/delete/:id', async (req, res) => {
         if (userEmail === 'vedantshetti123456@gmail.com') {
             const { id } = req.params;
             await User.findByIdAndDelete(id);
-            req.flash('success_msg', 'User has been successfully deleted.');
+            
             res.redirect('/collegeclub/admin/dashboard/user');
         } else {
             req.flash('error_msg', 'Access Denied: You do not have permission to delete this user.');
@@ -955,3 +1026,18 @@ router.post('/dashboard/sara/delete/:id', async (req, res) => {
 
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
