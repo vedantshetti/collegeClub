@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-// Check if the model has already been compiled
-const Pastevents = mongoose.models.Pastevents || mongoose.model('Pastevents', new mongoose.Schema({
+const pasteventsSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -18,6 +17,6 @@ const Pastevents = mongoose.models.Pastevents || mongoose.model('Pastevents', ne
         type: Date,
         default: Date.now
     }
-}));
+});
 
-module.exports = Pastevents;
+module.exports = mongoose.models.Pastevents || mongoose.model('Pastevents', pasteventsSchema);

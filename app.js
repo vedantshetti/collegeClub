@@ -41,7 +41,7 @@ const Sara = require('./models/sara');
 const departmentclubsRoutes = require('./routes/departmentclubs');
 const panclubsRoutes = require('./routes/panclubs');
 const adminRoutes = require('./routes/admin');
-const Pastevents = require('./models/Pastevents');
+const Pastevents = require('./models/pastevents');
 
 
 

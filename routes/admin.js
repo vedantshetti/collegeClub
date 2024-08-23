@@ -29,7 +29,7 @@ const Prediators = require('../models/prediators');
 const S4DS = require('../models/s4ds');
 const Saie = require('../models/saie');
 const Sara = require('../models/sara');
-const Pastevents = require('../models/Pastevents'); // Ensure the path is correct
+const Pastevents = require('../models/pastevents'); // Ensure the path is correct
 
 
 
