@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": "20.15.1"
+    "node": ">=20.8.0"
   },
   "name": "collegeclub",
   "version": "1.0.0",
